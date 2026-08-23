@@ -69,13 +69,82 @@
     });
   }
 
-  // ---------- Project filter ----------
-  // Matches the source design: "ทั้งหมด" (all) shows only the first three
-  // cards, any other filter shows the cards tagged with that filter.
+  // ---------- Project filter + pagination ----------
+  // "ทั้งหมด" (all) matches every card; any other filter matches only the
+  // cards tagged with it. The matching set is then sliced into pages of
+  // PAGE_SIZE; pagination controls are (re)built to fit whatever the
+  // current filter yields.
   var filterBar = document.getElementById('filter-bar');
+  var paginationEl = document.getElementById('projects-pagination');
+  var projectsSection = document.getElementById('projects');
   var projectCards = Array.prototype.slice.call(
     document.querySelectorAll('#projects-grid .project-card')
   );
+  var PAGE_SIZE = 6;
+  var currentFilter = 'ทั้งหมด';
+  var currentPage = 1;
+
+  function getFiltered() {
+    return projectCards.filter(function (card) {
+      return currentFilter === 'ทั้งหมด' || card.dataset.tag === currentFilter;
+    });
+  }
+
+  function renderProjects() {
+    var filtered = getFiltered();
+    var totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    var start = (currentPage - 1) * PAGE_SIZE;
+    var pageSet = filtered.slice(start, start + PAGE_SIZE);
+    projectCards.forEach(function (card) {
+      card.hidden = pageSet.indexOf(card) === -1;
+    });
+    renderPagination(totalPages);
+  }
+
+  function goToPage(page) {
+    currentPage = page;
+    renderProjects();
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function renderPagination(totalPages) {
+    if (!paginationEl) return;
+    paginationEl.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    var prevBtn = document.createElement('button');
+    prevBtn.type = 'button';
+    prevBtn.textContent = 'ก่อนหน้า';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener('click', function () { goToPage(currentPage - 1); });
+    paginationEl.appendChild(prevBtn);
+
+    for (var i = 1; i <= totalPages; i++) {
+      (function (page) {
+        var pageBtn = document.createElement('button');
+        pageBtn.type = 'button';
+        pageBtn.textContent = String(page);
+        if (page === currentPage) {
+          pageBtn.classList.add('is-active');
+          pageBtn.setAttribute('aria-current', 'page');
+        } else {
+          pageBtn.addEventListener('click', function () { goToPage(page); });
+        }
+        paginationEl.appendChild(pageBtn);
+      })(i);
+    }
+
+    var nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.textContent = 'ถัดไป';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener('click', function () { goToPage(currentPage + 1); });
+    paginationEl.appendChild(nextBtn);
+  }
+
   if (filterBar) {
     filterBar.addEventListener('click', function (e) {
       var btn = e.target.closest('.filter-btn');
@@ -84,13 +153,13 @@
         b.classList.remove('is-active');
       });
       btn.classList.add('is-active');
-      var filter = btn.dataset.filter;
-      projectCards.forEach(function (card, i) {
-        var show = filter === 'ทั้งหมด' ? i < 3 : card.dataset.tag === filter;
-        card.hidden = !show;
-      });
+      currentFilter = btn.dataset.filter;
+      currentPage = 1;
+      renderProjects();
     });
   }
+
+  renderProjects();
 
   // ---------- Contact form (no backend — local success state only) ----------
   var form = document.getElementById('project-form');
