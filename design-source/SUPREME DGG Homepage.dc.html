@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SUPREME DGG — ระบบผลิตน้ำสะอาดครบวงจร</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:#FFFFFF; color:#0B1D36; font-family:'IBM Plex Sans Thai','Montserrat',sans-serif; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#1769E0; text-decoration:none; }
+  a:hover { color:#35B8E8; }
+  input, textarea, button, select { font-family:inherit; }
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden">
+
+<header style="{{ headerStyle }}">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:32px">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+      <span style="position:relative;height:44px;width:44px;display:block;flex-shrink:0">
+        <img src="assets/logo-navy.png" alt="SUPREME DGG" style="{{ logoNavyStyle }}">
+        <img src="assets/logo-white.png" alt="" style="{{ logoWhiteStyle }}">
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1.1">
+        <span style="{{ brandNameStyle }}">SUPREME DGG</span>
+        <span style="{{ brandSubStyle }}">WATER &amp; SOLAR ENGINEERING</span>
+      </span>
+    </a>
+    <nav style="{{ navStyle }}">
+      <a href="#top" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">หน้าแรก</a>
+      <a href="#about" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">เกี่ยวกับเรา</a>
+      <a href="#solutions" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">ระบบและโซลูชัน</a>
+      <a href="#projects" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">ผลงาน</a>
+      <a href="#process" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">บริการ</a>
+      <a href="#contact" style="{{ navLinkStyle }}" style-hover="color:#35B8E8">ติดต่อเรา</a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+      <a href="#contact" style="{{ headerCtaStyle }}" style-hover="background:#0F58C4">ปรึกษาโครงการ</a>
+      <button onClick="{{ toggleMenu }}" style="{{ burgerStyle }}" aria-label="เมนู">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:64px 0 auto 0;z-index:90;background:#FFFFFF;border-bottom:1px solid #E2E9F2;box-shadow:0 16px 40px rgba(11,29,54,.10);padding:16px 24px 24px;display:flex;flex-direction:column;gap:4px">
+    <a href="#about" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:17px;font-weight:600;color:#0B1D36;border-bottom:1px solid #F0F4F9">เกี่ยวกับเรา</a>
+    <a href="#solutions" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:17px;font-weight:600;color:#0B1D36;border-bottom:1px solid #F0F4F9">ระบบและโซลูชัน</a>
+    <a href="#projects" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:17px;font-weight:600;color:#0B1D36;border-bottom:1px solid #F0F4F9">ผลงาน</a>
+    <a href="#process" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:17px;font-weight:600;color:#0B1D36;border-bottom:1px solid #F0F4F9">บริการ</a>
+    <a href="#contact" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:17px;font-weight:600;color:#0B1D36">ติดต่อเรา</a>
+  </div>
+</sc-if>
+
+<!-- HERO -->
+<section id="top" data-screen-label="Hero" style="position:relative;width:100%;min-height:min(88vh,860px);display:flex;align-items:flex-end;background:#0B1D36;overflow:hidden">
+  <div style="position:absolute;inset:0">
+    <image-slot id="dgg-hero" shape="rect" fit="cover" src="assets/hero-water-plant.png" placeholder="ภาพ Hero: ถังเก็บน้ำ + ระบบกรอง + ท่อ/ปั๊ม + แผงโซลาร์เซลล์ (ลากรูปมาวาง)"></image-slot>
+  </div>
+  <div style="{{ heroScrimStyle }}"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,29,54,.55) 0%,rgba(11,29,54,0) 30%)"></div>
+  <sc-if value="{{ heroEmpty }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;right:24px;bottom:24px;z-index:3;pointer-events:none;display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:14px;border:1.5px dashed rgba(255,255,255,.6);background:rgba(11,29,54,.55)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="m4 16 5-5 4 4 3-2 4 4"></path><circle cx="9" cy="9" r="1.4"></circle></svg>
+      <span style="font-size:14px;line-height:1.5;color:#FFFFFF">ลากภาพ Hero มาวางที่นี่<br><span style="color:#9FBEDD">ถัง + ระบบกรอง + ท่อ/ปั๊ม + โซลาร์เซลล์</span></span>
+    </div>
+  </sc-if>
+  <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;padding:180px 24px 72px">
+    <div style="max-width:720px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+        <span style="width:34px;height:2px;background:#35B8E8;display:block"></span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;color:#35B8E8">CLEAN WATER • SMART ENERGY • SUSTAINABLE FUTURE</span>
+      </div>
+      <h1 style="margin:0 0 24px;font-size:clamp(34px,5vw,60px);line-height:1.18;font-weight:700;color:#FFFFFF;text-wrap:pretty">ระบบผลิตน้ำสะอาดครบวงจร<br>ขับเคลื่อนด้วยพลังงานสะอาด</h1>
+      <p style="margin:0 0 36px;font-size:clamp(16px,1.4vw,19px);line-height:1.75;color:#C9DAEC;max-width:620px;text-wrap:pretty">ออกแบบ ผลิต และติดตั้งระบบกรองน้ำ ถังเก็บน้ำ ระบบผลิตน้ำประปาดื่มได้ และโซลาร์เซลล์ สำหรับชุมชน หน่วยงานภาครัฐ โรงงาน และภาคการเกษตร</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href="#solutions" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:12px;background:#1769E0;color:#FFFFFF;font-size:16px;font-weight:600;box-shadow:0 10px 26px rgba(23,105,224,.34)" style-hover="background:#35B8E8;color:#06182E">ดูระบบและโซลูชัน
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#contact" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:12px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.42);color:#FFFFFF;font-size:16px;font-weight:600" style-hover="background:#FFFFFF;color:#0B1D36;border-color:#FFFFFF">ปรึกษาโครงการ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section style="background:#0B1D36;border-top:1px solid rgba(255,255,255,.10)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+      <div style="padding:30px 28px 30px 0;display:flex;align-items:center;gap:16px">
+        <span style="font-family:'Montserrat',sans-serif;font-size:34px;font-weight:800;color:#35B8E8;line-height:1">15<span style="font-size:18px;font-weight:700">+</span></span>
+        <span style="font-size:15px;line-height:1.5;color:#C9DAEC">ดำเนินธุรกิจ<br>มากกว่า 15 ปี</span>
+      </div>
+      <div style="padding:30px 28px;display:flex;align-items:center;gap:14px;border-left:1px solid rgba(255,255,255,.10)">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#35B8E8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 3h10"></path><circle cx="6" cy="17" r="3"></circle><path d="M9 17h6l3-7"></path></svg>
+        <span style="font-size:15px;line-height:1.5;color:#C9DAEC">ออกแบบและติดตั้ง<br>ครบวงจร</span>
+      </div>
+      <div style="padding:30px 28px;display:flex;align-items:center;gap:14px;border-left:1px solid rgba(255,255,255,.10)">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#35B8E8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg>
+        <span style="font-size:15px;line-height:1.5;color:#C9DAEC">รองรับระบบ<br>ขนาดใหญ่</span>
+      </div>
+      <div style="padding:30px 0 30px 28px;display:flex;align-items:center;gap:14px;border-left:1px solid rgba(255,255,255,.10)">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#35B8E8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 14.5A9 9 0 1 1 12 3"></path><path d="M15 3.5 21 4l-.5 6"></path><path d="M12 8v4l3 2"></path></svg>
+        <span style="font-size:15px;line-height:1.5;color:#C9DAEC">บริการ<br>หลังการขาย</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="solutions" data-screen-label="What we do" data-reveal style="background:#FFFFFF;padding:clamp(72px,9vw,120px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="max-width:760px;margin-bottom:56px">
+      <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#1769E0;margin-bottom:16px">WHAT WE DO</div>
+      <h2 style="margin:0 0 18px;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#0B1D36;text-wrap:pretty">โซลูชันด้านน้ำและพลังงานครบวงจร</h2>
+      <p style="margin:0;font-size:17px;line-height:1.75;color:#4C6180">ตั้งแต่การวิเคราะห์คุณภาพน้ำต้นทาง จนถึงระบบจ่ายน้ำและพลังงานที่ใช้ขับเคลื่อนระบบ</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:24px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <article style="border:1px solid #E4EBF3;border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,29,54,.04);transition:box-shadow .25s ease,transform .25s ease,border-color .25s ease" style-hover="box-shadow:0 18px 40px rgba(11,29,54,.11);transform:translateY(-4px);border-color:#CFE0F5">
+          <div style="height:186px;background:#F4F7FA;position:relative">
+            <image-slot id="{{ s.slotId }}" shape="rect" fit="cover" src="{{ s.slotSrc }}" placeholder="{{ s.slotHint }}"></image-slot>
+          </div>
+          <div style="padding:26px 24px 28px">
+            <div style="width:44px;height:44px;border-radius:12px;background:#EEF5FE;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:#1769E0">{{ s.icon }}</div>
+            <h3 style="margin:0 0 10px;font-size:19px;font-weight:700;color:#0B1D36;line-height:1.4">{{ s.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:#4C6180">{{ s.body }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLETE SYSTEM -->
+<section id="about" data-screen-label="Complete system" data-reveal style="background:#F4F7FA;padding:clamp(72px,9vw,120px) 0;border-top:1px solid #E7EDF4;border-bottom:1px solid #E7EDF4">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:end;margin-bottom:52px">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#1769E0;margin-bottom:16px">COMPLETE SYSTEM</div>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#0B1D36;text-wrap:pretty">จากแหล่งน้ำ สู่ทุกครัวเรือน</h2>
+      </div>
+      <p style="margin:0;font-size:17px;line-height:1.75;color:#4C6180;max-width:520px">เราดูแลทุกขั้นตอน ตั้งแต่วิเคราะห์คุณภาพน้ำ ออกแบบระบบ ติดตั้ง ทดสอบ ไปจนถึงบำรุงรักษา</p>
+    </div>
+
+    <div style="background:#FFFFFF;border:1px solid #E4EBF3;border-radius:16px;padding:clamp(24px,3vw,40px);box-shadow:0 1px 2px rgba(11,29,54,.04)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px">
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+          <button onClick="{{ st.onClick }}" style="{{ st.style }}">
+            <span style="{{ st.numStyle }}">{{ st.num }}</span>
+            <span style="{{ st.iconStyle }}">{{ st.icon }}</span>
+            <span style="{{ st.labelStyle }}">{{ st.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:16px;display:flex;align-items:stretch;gap:14px;flex-wrap:wrap">
+        <div style="flex:1 1 300px;min-width:280px;display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:12px;background:#F1FAF4;border:1px solid #CFEBDB">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E9E63" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"></path></svg>
+          <span style="font-size:14.5px;line-height:1.6;color:#1B5C3D"><strong style="font-weight:700">Solar Energy</strong> จ่ายไฟให้ปั๊มน้ำและระบบควบคุม ลดค่าไฟและรองรับพื้นที่ไฟฟ้าเข้าไม่ถึง</span>
+        </div>
+        <div style="flex:2 1 420px;min-width:280px;padding:20px 24px;border-radius:12px;background:#0B1D36">
+          <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#35B8E8;margin-bottom:8px">{{ activeStage.step }}</div>
+          <h4 style="margin:0 0 8px;font-size:18px;font-weight:700;color:#FFFFFF">{{ activeStage.label }}</h4>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#B9CCE2">{{ activeStage.detail }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section data-screen-label="Sectors" data-reveal style="background:#FFFFFF;padding:clamp(72px,9vw,120px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#1769E0;margin-bottom:16px">SOLUTIONS BY SECTOR</div>
+    <h2 style="margin:0 0 48px;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#0B1D36">ออกแบบตามลักษณะการใช้งานจริง</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+      <sc-for list="{{ sectors }}" as="c" hint-placeholder-count="4">
+        <div style="border:1px solid #E4EBF3;border-radius:16px;padding:30px 26px 32px;background:#FFFFFF;transition:background .25s ease,border-color .25s ease" style-hover="background:#F7FAFD;border-color:#CFE0F5">
+          <div style="color:#1769E0;margin-bottom:20px">{{ c.icon }}</div>
+          <h3 style="margin:0 0 10px;font-size:18px;font-weight:700;color:#0B1D36">{{ c.title }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#4C6180">{{ c.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section data-screen-label="Why Supreme DGG" data-reveal style="background:#0B1D36;padding:clamp(72px,9vw,120px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#35B8E8;margin-bottom:16px">WHY SUPREME DGG</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#FFFFFF;text-wrap:pretty">งานวิศวกรรมน้ำที่วัดผลได้จริง</h2>
+        <p style="margin:0 0 32px;font-size:17px;line-height:1.75;color:#A9C0DA;max-width:460px">ระบบทุกชุดถูกออกแบบจากผลวิเคราะห์น้ำจริงในพื้นที่ ไม่ใช่แบบสำเร็จรูป</p>
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:12px;background:#1769E0;color:#FFFFFF;font-size:16px;font-weight:600" style-hover="background:#35B8E8;color:#06182E">คุยกับทีมวิศวกร
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10);border-radius:16px;overflow:hidden">
+        <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="6">
+          <div style="background:#0B1D36;padding:26px 24px;transition:background .25s ease" style-hover="background:#122A48">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#35B8E8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;color:#5D7CA0">{{ r.num }}</span>
+            </div>
+            <p style="margin:0;font-size:15.5px;line-height:1.65;color:#E4EEF8;font-weight:500">{{ r.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" data-screen-label="Projects" data-reveal style="background:#F4F7FA;padding:clamp(72px,9vw,120px) 0;border-bottom:1px solid #E7EDF4">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;justify-content:space-between;margin-bottom:36px">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#1769E0;margin-bottom:16px">FEATURED PROJECTS</div>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#0B1D36">ตัวอย่างลักษณะงานที่เราดูแล</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;background:#FFF6E5;border:1px solid #F2DCAE;margin-bottom:28px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A6741A" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></svg>
+      <span style="font-size:14px;line-height:1.6;color:#7A5610">ข้อมูลผลงานทั้งหมดในส่วนนี้เป็น <strong style="font-weight:700">Placeholder</strong> รอข้อมูลจริงจากบริษัท — ชื่อหน่วยงาน พื้นที่ และรูปภาพยังไม่ได้ระบุ</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      <sc-for list="{{ visibleProjects }}" as="p" hint-placeholder-count="3">
+        <article style="border-radius:16px;overflow:hidden;background:#FFFFFF;border:1px solid #E4EBF3;box-shadow:0 1px 2px rgba(11,29,54,.04);transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:0 20px 44px rgba(11,29,54,.13);transform:translateY(-4px)">
+          <div style="height:238px;position:relative;background:#E9EFF6">
+            <image-slot id="{{ p.slotId }}" shape="rect" fit="cover" src="{{ p.slotSrc }}" placeholder="{{ p.slotHint }}"></image-slot>
+          </div>
+          <div style="padding:24px 24px 28px">
+            <div style="display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;background:#EEF5FE;color:#1769E0;font-size:12px;font-weight:600;margin-bottom:14px">{{ p.tag }}</div>
+            <h3 style="margin:0 0 8px;font-size:18px;font-weight:700;color:#0B1D36;line-height:1.45">{{ p.title }}</h3>
+            <p style="margin:0 0 18px;font-size:15px;line-height:1.7;color:#4C6180">{{ p.body }}</p>
+            <div style="display:flex;gap:22px;padding-top:16px;border-top:1px solid #EDF2F7">
+              <div>
+                <div style="font-size:12px;color:#8397AF;margin-bottom:3px">กำลังผลิต</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:#0B1D36">—</div>
+              </div>
+              <div>
+                <div style="font-size:12px;color:#8397AF;margin-bottom:3px">พื้นที่</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:#0B1D36">—</div>
+              </div>
+              <div>
+                <div style="font-size:12px;color:#8397AF;margin-bottom:3px">ปีที่ส่งมอบ</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:#0B1D36">—</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" data-screen-label="Process" data-reveal style="background:#FFFFFF;padding:clamp(72px,9vw,120px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#1769E0;margin-bottom:16px">PROCESS</div>
+    <h2 style="margin:0 0 52px;font-size:clamp(28px,3.4vw,44px);line-height:1.28;font-weight:700;color:#0B1D36">ขั้นตอนการทำงาน</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(214px,1fr));gap:0;border-top:2px solid #E4EBF3">
+      <sc-for list="{{ steps }}" as="p" hint-placeholder-count="5">
+        <div style="padding:28px 24px 8px 0;position:relative">
+          <div style="position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:#1769E0"></div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;color:#35B8E8;margin-bottom:12px">{{ p.num }}</div>
+          <h3 style="margin:0 0 8px;font-size:17px;font-weight:700;color:#0B1D36;line-height:1.45">{{ p.title }}</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:#4C6180">{{ p.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + FORM -->
+<section id="contact" data-screen-label="Contact" style="background:#0B1D36;padding:clamp(72px,9vw,120px) 0;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-160px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(53,184,232,.20) 0%,rgba(53,184,232,0) 70%);pointer-events:none"></div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;position:relative">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:start">
+      <div>
+        <h2 style="margin:0 0 20px;font-size:clamp(28px,3.6vw,46px);line-height:1.24;font-weight:700;color:#FFFFFF;text-wrap:pretty">เริ่มต้นโครงการระบบน้ำที่เหมาะกับพื้นที่ของคุณ</h2>
+        <p style="margin:0 0 32px;font-size:17px;line-height:1.75;color:#A9C0DA;max-width:480px">ส่งรายละเอียดพื้นที่และความต้องการใช้น้ำ ทีมวิศวกรจะประเมินแนวทางระบบและขอบเขตงานให้เบื้องต้น</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px">
+          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:12px;background:#1769E0;color:#FFFFFF;font-size:16px;font-weight:600;box-shadow:0 10px 26px rgba(23,105,224,.34)" style-hover="background:#35B8E8;color:#06182E">ปรึกษาวิศวกร</a>
+          <a href="#contact-form" style="display:inline-flex;align-items:center;padding:16px 30px;border-radius:12px;background:transparent;border:1.5px solid rgba(255,255,255,.42);color:#FFFFFF;font-size:16px;font-weight:600" style-hover="background:#FFFFFF;color:#0B1D36;border-color:#FFFFFF">ขอใบเสนอราคา</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12)">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:8px">TELEPHONE</div>
+            <div style="font-size:16px;color:#E4EEF8">0X-XXX-XXXX <span style="font-size:13px;color:#7E97B5">(รอข้อมูล)</span></div>
+          </div>
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:8px">EMAIL</div>
+            <div style="font-size:16px;color:#E4EEF8">example@domain.co.th <span style="font-size:13px;color:#7E97B5">(รอข้อมูล)</span></div>
+          </div>
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:8px">LINE OFFICIAL</div>
+            <div style="font-size:16px;color:#E4EEF8">@placeholder <span style="font-size:13px;color:#7E97B5">(รอข้อมูล)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact-form" style="background:#FFFFFF;border-radius:16px;padding:clamp(26px,3vw,40px);box-shadow:0 24px 60px rgba(0,0,0,.30)">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:36px 8px">
+            <div style="width:60px;height:60px;border-radius:50%;background:#F1FAF4;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E9E63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
+            <h3 style="margin:0 0 10px;font-size:20px;font-weight:700;color:#0B1D36">ส่งข้อมูลเรียบร้อย</h3>
+            <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4C6180">ทีมงานจะติดต่อกลับภายใน 1–2 วันทำการ</p>
+            <button onClick="{{ resetForm }}" style="padding:12px 24px;border-radius:10px;border:1px solid #D8E2ED;background:#FFFFFF;color:#0B1D36;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:#F4F7FA">ส่งข้อมูลอีกครั้ง</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <h3 style="margin:0 0 6px;font-size:21px;font-weight:700;color:#0B1D36">แจ้งรายละเอียดโครงการ</h3>
+            <p style="margin:0 0 26px;font-size:14.5px;line-height:1.65;color:#7286A0">กรอกข้อมูลเบื้องต้น ทีมงานจะติดต่อกลับ</p>
+            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+              <label style="display:flex;flex-direction:column;gap:7px">
+                <span style="font-size:13.5px;font-weight:600;color:#3A4F6B">ชื่อผู้ติดต่อ *</span>
+                <input value="{{ form.name }}" onChange="{{ onName }}" required="{{ true }}" placeholder="ชื่อ–นามสกุล" style="padding:13px 15px;border-radius:10px;border:1px solid #D8E2ED;background:#FBFCFE;font-size:15px;color:#0B1D36;outline:none" style-focus="border-color:#1769E0;background:#FFFFFF">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:7px">
+                <span style="font-size:13.5px;font-weight:600;color:#3A4F6B">หน่วยงาน / บริษัท</span>
+                <input value="{{ form.org }}" onChange="{{ onOrg }}" placeholder="เช่น เทศบาลตำบล / โรงงาน" style="padding:13px 15px;border-radius:10px;border:1px solid #D8E2ED;background:#FBFCFE;font-size:15px;color:#0B1D36;outline:none" style-focus="border-color:#1769E0;background:#FFFFFF">
+              </label>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+                <label style="display:flex;flex-direction:column;gap:7px">
+                  <span style="font-size:13.5px;font-weight:600;color:#3A4F6B">เบอร์ติดต่อ *</span>
+                  <input value="{{ form.phone }}" onChange="{{ onPhone }}" required="{{ true }}" placeholder="08X-XXX-XXXX" style="padding:13px 15px;border-radius:10px;border:1px solid #D8E2ED;background:#FBFCFE;font-size:15px;color:#0B1D36;outline:none" style-focus="border-color:#1769E0;background:#FFFFFF">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px">
+                  <span style="font-size:13.5px;font-weight:600;color:#3A4F6B">ประเภทระบบ</span>
+                  <select value="{{ form.type }}" onChange="{{ onType }}" style="padding:13px 15px;border-radius:10px;border:1px solid #D8E2ED;background:#FBFCFE;font-size:15px;color:#0B1D36;outline:none" style-focus="border-color:#1769E0;background:#FFFFFF">
+                    <option value="ระบบกรองน้ำ">ระบบกรองน้ำ</option>
+                    <option value="ถังเก็บน้ำ">ถังเก็บน้ำ</option>
+                    <option value="ระบบน้ำดื่ม">ระบบน้ำดื่ม</option>
+                    <option value="โซลาร์เซลล์">โซลาร์เซลล์</option>
+                    <option value="ยังไม่ระบุ">ยังไม่ระบุ</option>
+                  </select>
+                </label>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:7px">
+                <span style="font-size:13.5px;font-weight:600;color:#3A4F6B">รายละเอียดพื้นที่และความต้องการใช้น้ำ</span>
+                <textarea value="{{ form.msg }}" onChange="{{ onMsg }}" rows="4" placeholder="เช่น จำนวนครัวเรือน แหล่งน้ำต้นทาง ปริมาณน้ำที่ต้องการต่อวัน" style="padding:13px 15px;border-radius:10px;border:1px solid #D8E2ED;background:#FBFCFE;font-size:15px;color:#0B1D36;outline:none;resize:vertical;line-height:1.6" style-focus="border-color:#1769E0;background:#FFFFFF"></textarea>
+              </label>
+              <button type="submit" style="margin-top:6px;padding:16px;border-radius:12px;border:none;background:#1769E0;color:#FFFFFF;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 10px 24px rgba(23,105,224,.26)" style-hover="background:#0F58C4">ส่งรายละเอียดโครงการ</button>
+              <p style="margin:2px 0 0;font-size:12.5px;line-height:1.6;color:#8397AF">แบบฟอร์มนี้เป็นตัวอย่างการทำงาน ยังไม่ได้เชื่อมต่อระบบรับข้อมูลจริง</p>
+            </form>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#06182E;padding:64px 0 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px;padding-bottom:48px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <img src="assets/logo-white.png" alt="SUPREME DGG" style="height:42px;width:auto;display:block">
+          <span style="display:flex;flex-direction:column;line-height:1.15">
+            <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;letter-spacing:.04em;color:#FFFFFF">SUPREME DGG</span>
+            <span style="font-size:12.5px;color:#7E97B5">บริษัท ซูพรีม ดีจีจี จำกัด</span>
+          </span>
+        </div>
+        <p style="margin:0 0 16px;font-size:14.5px;line-height:1.8;color:#94AECB;max-width:340px">ออกแบบ ผลิต ติดตั้ง และดูแลระบบผลิตน้ำสะอาด ถังเก็บน้ำ ระบบจ่ายน้ำ และพลังงานแสงอาทิตย์</p>
+        <div style="font-size:13.5px;color:#7E97B5">เลขทะเบียนนิติบุคคล 0105552117513</div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:18px">ที่อยู่</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.85;color:#C2D4E7">139 ชั้น 2 ซอยสิรินธร 7 ถนนสิรินธร<br>แขวงบางบำหรุ เขตบางพลัด<br>กรุงเทพมหานคร 10700</p>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:18px">ติดต่อ</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px;color:#C2D4E7">
+          <span>โทร. 0X-XXX-XXXX <span style="color:#6B87A6">(รอข้อมูล)</span></span>
+          <span>อีเมล example@domain.co.th <span style="color:#6B87A6">(รอข้อมูล)</span></span>
+          <span>LINE @placeholder <span style="color:#6B87A6">(รอข้อมูล)</span></span>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#5D7CA0;margin-bottom:18px">เมนู</div>
+        <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px">
+          <a href="#about" style="color:#C2D4E7" style-hover="color:#35B8E8">เกี่ยวกับเรา</a>
+          <a href="#solutions" style="color:#C2D4E7" style-hover="color:#35B8E8">ระบบและโซลูชัน</a>
+          <a href="#projects" style="color:#C2D4E7" style-hover="color:#35B8E8">ผลงาน</a>
+          <a href="#process" style="color:#C2D4E7" style-hover="color:#35B8E8">บริการ</a>
+          <a href="#contact" style="color:#C2D4E7" style-hover="color:#35B8E8">ติดต่อเรา</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.10);padding:24px 0 30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13px;color:#6B87A6">
+      <span>© 2026 SUPREME DGG CO., LTD. All rights reserved.</span>
+      <span>ข้อมูลผลงานและช่องทางติดต่อบางส่วนเป็น Placeholder</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const NAVY = '#0B1D36', BLUE = '#1769E0', CYAN = '#35B8E8';
+
+const ic = (paths, stroke) => React.createElement('svg', {
+  width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none',
+  stroke: stroke || 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round'
+}, paths.map((d, i) => React.createElement('path', { key: i, d })));
+
+const circ = (cx, cy, r) => React.createElement('circle', { key: 'c' + cx + cy, cx, cy, r });
+const svg = (children, size) => React.createElement('svg', {
+  width: size || 26, height: size || 26, viewBox: '0 0 24 24', fill: 'none',
+  stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round'
+}, children);
+
+const ICONS = {
+  filter: () => svg([React.createElement('path', { key: 1, d: 'M4 4h16l-6 7v7l-4 2v-9L4 4Z' }), React.createElement('path', { key: 2, d: 'M9 15h6' })]),
+  tank: () => svg([React.createElement('ellipse', { key: 1, cx: 12, cy: 6, rx: 8, ry: 3 }), React.createElement('path', { key: 2, d: 'M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6' }), React.createElement('path', { key: 3, d: 'M4 13c0 1.7 3.6 3 8 3s8-1.3 8-3' })]),
+  drop: () => svg([React.createElement('path', { key: 1, d: 'M12 3s6 6.4 6 10.2A6 6 0 0 1 6 13.2C6 9.4 12 3 12 3Z' }), React.createElement('path', { key: 2, d: 'M9.5 13.6a2.6 2.6 0 0 0 2.6 2.6' })]),
+  solar: () => svg([React.createElement('path', { key: 1, d: 'M3 16h18l-2-9H5l-2 9Z' }), React.createElement('path', { key: 2, d: 'M12 7v9M4.6 11.5h14.8M12 16v5M8 21h8' })]),
+  source: () => svg([React.createElement('path', { key: 1, d: 'M3 15c1.5-1.6 3-1.6 4.5 0s3 1.6 4.5 0 3-1.6 4.5 0 3 1.6 4.5 0' }), React.createElement('path', { key: 2, d: 'M3 19.5c1.5-1.6 3-1.6 4.5 0s3 1.6 4.5 0 3-1.6 4.5 0 3 1.6 4.5 0' }), React.createElement('path', { key: 3, d: 'M12 3v6M9 6l3-3 3 3' })]),
+  uv: () => svg([circ(12, 12, 4), React.createElement('path', { key: 2, d: 'M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1' })]),
+  pump: () => svg([circ(8, 14, 4), React.createElement('path', { key: 2, d: 'M8 10V5h9v5M17 5h3M12 14h9M19 12l2 2-2 2' })]),
+  community: () => svg([React.createElement('path', { key: 1, d: 'M3 20v-8l6-4 6 4v8' }), React.createElement('path', { key: 2, d: 'M15 20v-6l3-2 3 2v6' }), React.createElement('path', { key: 3, d: 'M2 20h20M8 20v-4h2v4' })], 28),
+  gov: () => svg([React.createElement('path', { key: 1, d: 'M3 10 12 4l9 6' }), React.createElement('path', { key: 2, d: 'M5 10v9M10 10v9M14 10v9M19 10v9M2.5 21h19' })], 28),
+  factory: () => svg([React.createElement('path', { key: 1, d: 'M3 21V10l6 4V10l6 4V7h6v14H3Z' }), React.createElement('path', { key: 2, d: 'M7 17h2M13 17h2M18 17h1' })], 28),
+  farm: () => svg([React.createElement('path', { key: 1, d: 'M12 21V9' }), React.createElement('path', { key: 2, d: 'M12 12c0-3 2-5 5-5 0 3-2 5-5 5ZM12 16c0-3-2-5-5-5 0 3 2 5 5 5Z' }), React.createElement('path', { key: 3, d: 'M4 21h16' })], 28)
+};
+
+class Component extends DCLogic {
+  state = {
+    scrolled: false, menuOpen: false, narrow: false,
+    stage: 0, filter: 'ทั้งหมด', sent: false, heroFilled: false,
+    form: { name: '', org: '', phone: '', type: 'ระบบกรองน้ำ', msg: '' }
+  };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    this.onResize = () => {
+      const n = window.innerWidth < 1000;
+      if (n !== this.state.narrow) this.setState({ narrow: n, menuOpen: n ? this.state.menuOpen : false });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    this.onResize(); this.onScroll();
+
+    const watchHero = () => {
+      const slot = document.getElementById('dgg-hero');
+      if (!slot) { setTimeout(watchHero, 300); return; }
+      const sync = () => {
+        const img = slot.shadowRoot && slot.shadowRoot.querySelector('img');
+        const loaded = !!(img && img.complete && img.naturalWidth > 0);
+        const f = slot.hasAttribute('data-filled') || loaded;
+        if (f !== this.state.heroFilled) this.setState({ heroFilled: f });
+      };
+      this.heroMo = new MutationObserver(sync);
+      this.heroMo.observe(slot, { attributes: true, attributeFilter: ['data-filled'] });
+      const img = slot.shadowRoot && slot.shadowRoot.querySelector('img');
+      if (img) { img.addEventListener('load', sync); img.addEventListener('error', sync); }
+      sync();
+      this.heroPoll = setInterval(sync, 500);
+    };
+    watchHero();
+
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)';
+        this.io.observe(el);
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    if (this.io) this.io.disconnect();
+    if (this.heroMo) this.heroMo.disconnect();
+    if (this.heroPoll) clearInterval(this.heroPoll);
+  }
+
+  setField(k, v) { this.setState({ form: Object.assign({}, this.state.form, { [k]: v }) }); }
+
+  renderVals() {
+    const { scrolled, menuOpen, narrow, stage, filter, sent, form, heroFilled } = this.state;
+
+    const heroScrimStyle = 'position:absolute;inset:0;pointer-events:none;transition:background .4s ease;background:' + (heroFilled
+      ? 'linear-gradient(90deg,rgba(11,29,54,.94) 0%,rgba(11,29,54,.86) 42%,rgba(11,29,54,.35) 78%,rgba(11,29,54,.15) 100%)'
+      : 'linear-gradient(90deg,rgba(11,29,54,.92) 0%,rgba(11,29,54,.72) 34%,rgba(11,29,54,.12) 62%,rgba(11,29,54,.04) 100%)');
+
+    const headerStyle = [
+      'position:fixed;top:0;left:0;right:0;z-index:100;height:' + (scrolled ? '68px' : '82px'),
+      'transition:height .3s ease, background .3s ease, box-shadow .3s ease, border-color .3s ease',
+      'background:' + (scrolled ? '#FFFFFF' : 'transparent'),
+      'border-bottom:1px solid ' + (scrolled ? '#E7EDF4' : 'rgba(255,255,255,0)'),
+      'box-shadow:' + (scrolled ? '0 6px 24px rgba(11,29,54,.07)' : 'none')
+    ].join(';');
+
+    const onDark = !scrolled;
+    const navLinkStyle = 'font-size:15.5px;font-weight:600;color:' + (onDark ? '#E4EEF8' : '#233A58') + ';transition:color .2s ease;white-space:nowrap';
+
+    const stagesData = [
+      { label: 'แหล่งน้ำดิบ', icon: 'source', detail: 'สำรวจพื้นที่และวิเคราะห์คุณภาพน้ำต้นทาง ทั้งน้ำผิวดิน น้ำบาดาล และน้ำประปา เพื่อกำหนดชุดอุปกรณ์และขนาดระบบที่เหมาะสม' },
+      { label: 'ระบบกรองน้ำ', icon: 'filter', detail: 'กรองตะกอน สนิมเหล็ก ความกระด้าง และสารแขวนลอย ด้วยชุดสารกรองที่เลือกตามผลวิเคราะห์น้ำของแต่ละพื้นที่' },
+      { label: 'ฆ่าเชื้อ / RO', icon: 'uv', detail: 'ระบบฆ่าเชื้อและ Reverse Osmosis สำหรับผลิตน้ำที่ดื่มได้ พร้อมจุดเก็บตัวอย่างน้ำเพื่อตรวจสอบคุณภาพ' },
+      { label: 'ถังเก็บน้ำสะอาด', icon: 'tank', detail: 'ถังเก็บและสำรองน้ำพร้อมระบบควบคุมระดับน้ำ กำหนดความจุจากปริมาณการใช้น้ำสูงสุดของโครงการ' },
+      { label: 'ระบบจ่ายน้ำ', icon: 'pump', detail: 'ปั๊มและระบบท่อจ่ายน้ำพร้อมระบบควบคุมแรงดัน ส่งน้ำถึงจุดใช้งานอย่างสม่ำเสมอตลอดวัน' }
+    ];
+
+    const stages = stagesData.map((s, i) => {
+      const on = i === stage;
+      return {
+        num: String(i + 1).padStart(2, '0'),
+        label: s.label,
+        icon: React.createElement('span', { style: { display: 'block', color: on ? CYAN : BLUE } }, ICONS[s.icon]()),
+        onClick: () => this.setState({ stage: i }),
+        style: [
+          'display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;cursor:pointer',
+          'padding:20px 18px;border-radius:12px;width:100%',
+          'border:1px solid ' + (on ? NAVY : '#E4EBF3'),
+          'background:' + (on ? NAVY : '#FBFCFE'),
+          'transition:background .25s ease, border-color .25s ease, transform .2s ease',
+          'transform:' + (on ? 'translateY(-2px)' : 'none')
+        ].join(';'),
+        numStyle: "font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:.14em;color:" + (on ? CYAN : '#9BB0C8'),
+        iconStyle: 'display:block',
+        labelStyle: 'font-size:15px;font-weight:700;line-height:1.4;color:' + (on ? '#FFFFFF' : NAVY)
+      };
+    });
+
+    const activeStage = {
+      step: 'STEP ' + String(stage + 1).padStart(2, '0'),
+      label: stagesData[stage].label,
+      detail: stagesData[stage].detail
+    };
+
+    const services = [
+      { key: 'filter', slotId: 'dgg-svc-filter', slotSrc: 'assets/svc-filter.png', slotHint: 'ภาพชุดกรองน้ำ / ถังกรอง', title: 'ระบบกรองน้ำ', body: 'ปรับคุณภาพน้ำให้เหมาะกับการอุปโภค บริโภค และอุตสาหกรรม' },
+      { key: 'tank', slotId: 'dgg-svc-tank', slotSrc: 'assets/svc-tank.png', slotHint: 'ภาพถังเก็บน้ำขนาดใหญ่', title: 'ถังเก็บน้ำ', body: 'ถังเก็บและสำรองน้ำสำหรับชุมชน โรงงาน และโครงการขนาดใหญ่' },
+      { key: 'drop', slotId: 'dgg-svc-drink', slotSrc: 'assets/svc-drink.png', slotHint: 'ภาพระบบผลิตน้ำดื่ม / RO', title: 'ระบบผลิตน้ำสะอาดดื่มได้', body: 'ระบบผลิตน้ำประปาและน้ำดื่มที่ออกแบบตามคุณภาพน้ำต้นทาง' },
+      { key: 'solar', slotId: 'dgg-svc-solar', slotSrc: 'assets/svc-solar.png', slotHint: 'ภาพแผงโซลาร์เซลล์หน้างาน', title: 'ระบบพลังงานแสงอาทิตย์', body: 'ลดค่าใช้จ่ายด้านพลังงานและเพิ่มความยั่งยืนให้ระบบผลิตน้ำ' }
+    ].map((s) => Object.assign({}, s, { icon: ICONS[s.key]() }));
+
+    const sectors = [
+      { key: 'community', title: 'ชุมชนและหมู่บ้าน', body: 'ระบบประปาหมู่บ้านและจุดจ่ายน้ำดื่ม รองรับการใช้น้ำร่วมกันของหลายครัวเรือน' },
+      { key: 'gov', title: 'หน่วยงานราชการ', body: 'งาน อบต. เทศบาล และหน่วยงานภาครัฐ พร้อมเอกสารประกอบการจัดซื้อจัดจ้าง' },
+      { key: 'factory', title: 'โรงงานและอุตสาหกรรม', body: 'น้ำใช้ในกระบวนการผลิต ระบบสำรองน้ำ และการปรับคุณภาพน้ำตามข้อกำหนดของโรงงาน' },
+      { key: 'farm', title: 'เกษตรกรรมและพื้นที่ห่างไกล', body: 'ระบบสูบและจ่ายน้ำด้วยพลังงานแสงอาทิตย์ สำหรับพื้นที่ที่ไฟฟ้าเข้าไม่ถึง' }
+    ].map((s) => Object.assign({}, s, { icon: ICONS[s.key]() }));
+
+    const reasons = [
+      'ออกแบบระบบตามสภาพน้ำจริงในพื้นที่',
+      'เลือกอุปกรณ์ตามมาตรฐานวิศวกรรม',
+      'ติดตั้งและทดสอบโดยทีมงานผู้เชี่ยวชาญ',
+      'รองรับการทำงานร่วมกับระบบพลังงานแสงอาทิตย์',
+      'ดูแลหลังการขายและงานบำรุงรักษา',
+      'ปรับขนาดระบบตามความต้องการของโครงการ'
+    ].map((t, i) => ({ num: String(i + 1).padStart(2, '0'), text: t }));
+
+    const allProjects = [
+      { slotId: 'dgg-proj-1', slotSrc: 'assets/proj-1.png', slotHint: 'ภาพโครงการระบบกรองน้ำ', tag: 'ระบบกรองน้ำ', title: 'โครงการตัวอย่าง — ระบบกรองน้ำชุมชน', body: 'รอข้อมูลจริงจากบริษัท: ขอบเขตงาน กำลังผลิต และภาพหน้างาน' },
+      { slotId: 'dgg-proj-2', slotSrc: 'assets/proj-2.png', slotHint: 'ภาพโครงการถังเก็บน้ำ', tag: 'ถังเก็บน้ำ', title: 'โครงการตัวอย่าง — ถังเก็บและสำรองน้ำ', body: 'รอข้อมูลจริงจากบริษัท: ความจุถัง โครงสร้างฐาน และระบบควบคุมระดับน้ำ' },
+      { slotId: 'dgg-proj-3', slotSrc: 'assets/proj-3.png', slotHint: 'ภาพโครงการโซลาร์เซลล์', tag: 'โซลาร์เซลล์', title: 'โครงการตัวอย่าง — ระบบสูบน้ำพลังงานแสงอาทิตย์', body: 'รอข้อมูลจริงจากบริษัท: ขนาดแผง กำลังปั๊ม และปริมาณน้ำต่อวัน' },
+      { slotId: 'dgg-proj-4', slotSrc: 'assets/proj-4.png', slotHint: 'ภาพโครงการน้ำดื่ม', tag: 'น้ำดื่ม', title: 'โครงการตัวอย่าง — ระบบผลิตน้ำดื่มดื่มได้', body: 'รอข้อมูลจริงจากบริษัท: มาตรฐานน้ำ ผลตรวจคุณภาพ และจุดจ่ายน้ำ' }
+    ];
+
+    const filterLabels = ['ทั้งหมด', 'ระบบกรองน้ำ', 'ถังเก็บน้ำ', 'น้ำดื่ม', 'โซลาร์เซลล์'];
+    const filters = filterLabels.map((l) => {
+      const on = l === filter;
+      return {
+        label: l,
+        onClick: () => this.setState({ filter: l }),
+        style: [
+          'padding:10px 18px;border-radius:999px;cursor:pointer;font-size:14.5px;font-weight:600',
+          'border:1px solid ' + (on ? NAVY : '#D8E2ED'),
+          'background:' + (on ? NAVY : '#FFFFFF'),
+          'color:' + (on ? '#FFFFFF' : '#3A4F6B'),
+          'transition:background .2s ease,color .2s ease,border-color .2s ease'
+        ].join(';')
+      };
+    });
+    const visibleProjects = filter === 'ทั้งหมด' ? allProjects.slice(0, 3) : allProjects.filter((p) => p.tag === filter);
+
+    const steps = [
+      { title: 'สำรวจพื้นที่และวิเคราะห์น้ำ', body: 'เก็บตัวอย่างน้ำ ตรวจสอบสภาพพื้นที่และปริมาณการใช้น้ำ' },
+      { title: 'ออกแบบระบบ', body: 'กำหนดผังระบบ อุปกรณ์ และขนาดถัง พร้อมประมาณราคา' },
+      { title: 'ผลิตและติดตั้ง', body: 'ผลิตชุดอุปกรณ์ ติดตั้งงานระบบท่อ ปั๊ม และแผงโซลาร์' },
+      { title: 'ทดสอบและส่งมอบ', body: 'ทดสอบเดินระบบ ตรวจคุณภาพน้ำ และอบรมผู้ใช้งาน' },
+      { title: 'บริการหลังการขาย', body: 'บำรุงรักษาตามรอบ เปลี่ยนสารกรอง และให้คำปรึกษาต่อเนื่อง' }
+    ].map((s, i) => Object.assign({}, s, { num: 'STEP ' + String(i + 1).padStart(2, '0') }));
+
+    return {
+      headerStyle, navLinkStyle, heroScrimStyle, heroEmpty: !heroFilled,
+      logoNavyStyle: 'position:absolute;inset:0;height:44px;width:auto;display:block;transition:opacity .25s ease;opacity:' + (onDark ? 0 : 1),
+      logoWhiteStyle: 'position:absolute;inset:0;height:44px;width:auto;display:block;transition:opacity .25s ease;opacity:' + (onDark ? 1 : 0),
+      brandNameStyle: "font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;letter-spacing:.04em;color:" + (onDark ? '#FFFFFF' : NAVY),
+      brandSubStyle: "font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.15em;color:" + (onDark ? CYAN : '#6E8AAA'),
+      navStyle: narrow ? 'display:none' : 'display:flex;align-items:center;gap:28px;margin-left:8px',
+      headerCtaStyle: [
+        'display:inline-flex;align-items:center;padding:12px 22px;border-radius:12px;font-size:15px;font-weight:600;white-space:nowrap',
+        'background:' + (scrolled ? BLUE : 'rgba(255,255,255,.12)'),
+        'color:#FFFFFF',
+        'border:1.5px solid ' + (scrolled ? BLUE : 'rgba(255,255,255,.45)'),
+        'transition:background .25s ease,border-color .25s ease',
+        narrow ? 'display:none' : ''
+      ].join(';'),
+      burgerStyle: [
+        narrow ? 'display:inline-flex' : 'display:none',
+        'align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;cursor:pointer',
+        'background:' + (scrolled ? '#F4F7FA' : 'rgba(255,255,255,.12)'),
+        'border:1px solid ' + (scrolled ? '#E0E8F1' : 'rgba(255,255,255,.35)'),
+        'color:' + (scrolled ? NAVY : '#FFFFFF')
+      ].join(';'),
+      menuOpen: menuOpen && narrow,
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      stages, activeStage, services, sectors, reasons, filters, visibleProjects, steps,
+      sent, notSent: !sent, form,
+      onName: (e) => this.setField('name', e.target.value),
+      onOrg: (e) => this.setField('org', e.target.value),
+      onPhone: (e) => this.setField('phone', e.target.value),
+      onType: (e) => this.setField('type', e.target.value),
+      onMsg: (e) => this.setField('msg', e.target.value),
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false, form: { name: '', org: '', phone: '', type: 'ระบบกรองน้ำ', msg: '' } })
+    };
+  }
+}
+</script>
+</body>
+</html>
