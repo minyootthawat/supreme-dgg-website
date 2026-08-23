@@ -104,6 +104,17 @@
       </div>
       <div class="grid grid-4">
         <article class="card service-card">
+          <div class="img-slot img-slot-sm" data-slot="svc-tank">
+            <img src="assets/svc-tank.jpg" alt="ระบบเก็บและสำรองน้ำ" width="700" height="700" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path><path d="M4 13c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg></div>
+            <h3>ระบบเก็บและสำรองน้ำ</h3>
+            <p>ถังเก็บและสำรองน้ำสำหรับชุมชน โรงงาน และโครงการขนาดใหญ่</p>
+            <div class="card-spec"><span>ขอบเขตงาน</span><strong>ออกแบบ · ผลิต · ติดตั้ง · ทดสอบ</strong></div>
+          </div>
+        </article>
+        <article class="card service-card">
           <div class="img-slot img-slot-sm" data-slot="svc-filter">
             <img src="assets/svc-filter.png" alt="ชุดกรองน้ำและถังกรอง" width="344" height="419" loading="lazy" decoding="async">
           </div>
@@ -115,19 +126,8 @@
           </div>
         </article>
         <article class="card service-card">
-          <div class="img-slot img-slot-sm" data-slot="svc-tank">
-            <img src="assets/svc-tank.png" alt="ถังเก็บน้ำขนาดใหญ่" width="377" height="419" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <div class="card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"></path><path d="M4 13c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg></div>
-            <h3>ระบบเก็บและสำรองน้ำ</h3>
-            <p>ถังเก็บและสำรองน้ำสำหรับชุมชน โรงงาน และโครงการขนาดใหญ่</p>
-            <div class="card-spec"><span>ขอบเขตงาน</span><strong>ออกแบบ · ผลิต · ติดตั้ง · ทดสอบ</strong></div>
-          </div>
-        </article>
-        <article class="card service-card">
           <div class="img-slot img-slot-sm" data-slot="svc-drink">
-            <img src="assets/svc-drink.png" alt="ระบบผลิตน้ำดื่ม / RO" width="336" height="419" loading="lazy" decoding="async">
+            <img src="assets/svc-drink.jpg" alt="ระบบผลิตน้ำสะอาดดื่มได้" width="700" height="700" loading="lazy" decoding="async">
           </div>
           <div class="card-body">
             <div class="card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 10.2A6 6 0 0 1 6 13.2C6 9.4 12 3 12 3Z"></path><path d="M9.5 13.6a2.6 2.6 0 0 0 2.6 2.6"></path></svg></div>
@@ -138,7 +138,7 @@
         </article>
         <article class="card service-card">
           <div class="img-slot img-slot-sm" data-slot="svc-solar">
-            <img src="assets/svc-solar.png" alt="แผงโซลาร์เซลล์หน้างาน" width="349" height="419" loading="lazy" decoding="async">
+            <img src="assets/svc-solar.jpg" alt="ระบบพลังงานแสงอาทิตย์" width="700" height="700" loading="lazy" decoding="async">
           </div>
           <div class="card-body">
             <div class="card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h18l-2-9H5l-2 9Z"></path><path d="M12 7v9M4.6 11.5h14.8M12 16v5M8 21h8"></path></svg></div>
@@ -266,88 +266,471 @@
       <div class="projects-head">
         <div>
           <div class="eyebrow-label">FEATURED PROJECTS</div>
-          <h2>ตัวอย่างลักษณะงานที่เราดูแล</h2>
+          <h2>ผลงานที่ส่งมอบจริงทั่วประเทศ</h2>
+          <p class="section-lede">ผลงานที่ส่งมอบแล้ว 30 โครงการทั่วประเทศ</p>
         </div>
         <div class="filter-bar" id="filter-bar">
           <button type="button" class="filter-btn is-active" data-filter="ทั้งหมด">ทั้งหมด</button>
-          <button type="button" class="filter-btn" data-filter="ระบบกรองน้ำ">ระบบกรองน้ำ</button>
-          <button type="button" class="filter-btn" data-filter="ถังเก็บน้ำ">ถังเก็บน้ำ</button>
-          <button type="button" class="filter-btn" data-filter="น้ำดื่ม">น้ำดื่ม</button>
-          <button type="button" class="filter-btn" data-filter="โซลาร์เซลล์">โซลาร์เซลล์</button>
+          <button type="button" class="filter-btn" data-filter="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</button>
+          <button type="button" class="filter-btn" data-filter="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</button>
+          <button type="button" class="filter-btn" data-filter="ระบบน้ำประปาดื่มได้">ระบบน้ำประปาดื่มได้</button>
         </div>
       </div>
 
-      <div class="notice">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A6741A" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></svg>
-        <span>ข้อมูลผลงานทั้งหมดในส่วนนี้เป็น <strong>Placeholder</strong> รอข้อมูลจริงจากบริษัท — ชื่อหน่วยงาน พื้นที่ และรายละเอียดโครงการยังไม่ได้ระบุ (ภาพประกอบใช้ชั่วคราว)</span>
+      <div class="grid grid-3" id="projects-grid">
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-01">
+            <img src="assets/project-01.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลแม่สลิด อ.บ้านตาก จ.ตาก" width="659" height="493" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลแม่สลิด</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 3 บ้านแม่สลิด ต.แม่สลิด อ.บ้านตาก จ.ตาก</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.บ้านตาก จ.ตาก</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-02">
+            <img src="assets/project-02.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลแม่สลิด อ.บ้านตาก จ.ตาก" width="659" height="493" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลแม่สลิด</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 9 บ้านเด่นไม้ซุง ต.แม่สลิด อ.บ้านตาก จ.ตาก</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.บ้านตาก จ.ตาก</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-03">
+            <img src="assets/project-03.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลแม่ต้าน อ.แม่ต้าน จ.ตาก" width="659" height="492" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลแม่ต้าน</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 2 บ้านลำร้อง ต.แม่ต้าน อ.แม่ต้าน จ.ตาก</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.แม่ต้าน จ.ตาก</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-04">
+            <img src="assets/project-04.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลบ้านเสด็จ อ.เคียนซา จ.สุราษฎร์ธานี" width="660" height="592" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลบ้านเสด็จ</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 14 บ้านสายวารี ต.บ้านเสด็จ อ.เคียนซา จ.สุราษฎร์ธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เคียนซา จ.สุราษฎร์ธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-05">
+            <img src="assets/project-05.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลทรายมูล อ.ทรายมูล จ.ยโสธร" width="727" height="473" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลทรายมูล</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 14 ต.ทรายมูล อ.ทรายมูล จ.ยโสธร</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ทรายมูล จ.ยโสธร</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-06">
+            <img src="assets/project-06.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลบ้านบัว อ.เมือง จ.บุรีรัมย์" width="664" height="492" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลบ้านบัว</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 11 บ้านหัววัว ต.บ้านบัว อ.เมือง จ.บุรีรัมย์</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมือง จ.บุรีรัมย์</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-07">
+            <img src="assets/project-07.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลสุขเกษม อ.ปักธงชัย จ.นครราชสีมา" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลสุขเกษม</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 2 บ้านปลายดาบ อ.ปักธงชัย จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ปักธงชัย จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-08">
+            <img src="assets/project-08.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลสุขเกษม อ.ปักธงชัย จ.นครราชสีมา" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลสุขเกษม</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 9 บ้านบุเจ็ก อ.ปักธงชัย จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ปักธงชัย จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-09">
+            <img src="assets/project-09.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลช่องแมว อ.ลำทะเมนชัย จ.นครราชสีมา" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลช่องแมว</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 3 บ้านช่องแมว อ.ลำทะเมนชัย จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ลำทะเมนชัย จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-10">
+            <img src="assets/project-10.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลช่องแมว อ.ลำทะเมนชัย จ.นครราชสีมา" width="663" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลช่องแมว</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 12 บ้านหนองจานใต้ อ.ลำทะเมนชัย จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ลำทะเมนชัย จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-11">
+            <img src="assets/project-11.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลทุ่งสว่าง อ.ประทาย จ.นครราชสีมา" width="731" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลทุ่งสว่าง</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 3 บ้านขี้เหล็ก อ.ประทาย จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ประทาย จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-12">
+            <img src="assets/project-12.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลวังหมี อ.วังน้ำเขียว จ.นครราชสีมา" width="664" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลวังหมี</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 3 บ้านคลองใบพัด อ.วังน้ำเขียว จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.วังน้ำเขียว จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-13">
+            <img src="assets/project-13.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลไทยสามัคคี อ.วังน้ำเขียว จ.นครราชสีมา" width="609" height="460" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลไทยสามัคคี</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 1 บ้านไทยสามัคคี อ.วังน้ำเขียว จ.นครราชสีมา</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.วังน้ำเขียว จ.นครราชสีมา</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-14">
+            <img src="assets/project-14.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลป่ามะนาว อ.บ้านฝาง จ.ขอนแก่น" width="726" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลป่ามะนาว</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 4 บ้านหินกอง อ.บ้านฝาง จ.ขอนแก่น</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.บ้านฝาง จ.ขอนแก่น</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-15">
+            <img src="assets/project-15.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. เทศบาลตำบลหนองเรือ อ.หนองเรือ จ.ขอนแก่น" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>เทศบาลตำบลหนองเรือ</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. ต.หนองเรือ อ.หนองเรือ จ.ขอนแก่น</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.หนองเรือ จ.ขอนแก่น</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-16">
+            <img src="assets/project-16.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลหนองยาว อ.เมืองสระบุรี จ.สระบุรี" width="683" height="511" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลหนองยาว</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 3 อ.เมืองสระบุรี จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมืองสระบุรี จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-17">
+            <img src="assets/project-17.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลคำพราน อ.วังม่วง จ.สระบุรี" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลคำพราน</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 7 อ.วังม่วง จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.วังม่วง จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-18">
+            <img src="assets/project-18.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลท่าตูม อ.แก่งคอย จ.สระบุรี" width="652" height="484" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลท่าตูม</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. ต.ท่าตูม อ.แก่งคอย จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.แก่งคอย จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-19">
+            <img src="assets/project-19.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลตะกุด อ.เมืองสระบุรี จ.สระบุรี" width="615" height="460" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลตะกุด</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 6 อ.เมืองสระบุรี จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมืองสระบุรี จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-20">
+            <img src="assets/project-20.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลดอนพุด อ.ดอนพุด จ.สระบุรี" width="685" height="493" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลดอนพุด</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 4 อ.ดอนพุด จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.ดอนพุด จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-21">
+            <img src="assets/project-21.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. องค์การบริหารส่วนตำบลหน้าพระลาน อ.เฉลิมพระเกียรติ จ.สระบุรี" width="761" height="576" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลหน้าพระลาน</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. หมู่ 11 อ.เฉลิมพระเกียรติ จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เฉลิมพระเกียรติ จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 500 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-22">
+            <img src="assets/project-22.jpg" alt="ถังเก็บน้ำขนาด 500 ลบ.ม. เทศบาลตำบลหน้าพระลาน อ.เฉลิมพระเกียรติ จ.สระบุรี" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 500 ลบ.ม.</div>
+            <h3>เทศบาลตำบลหน้าพระลาน</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 500 ลบ.ม. พื้นที่เทศบาล อ.เฉลิมพระเกียรติ จ.สระบุรี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>500 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เฉลิมพระเกียรติ จ.สระบุรี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-23">
+            <img src="assets/project-23.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลนาหนัง อ.โพนพิสัย จ.หนองคาย" width="733" height="550" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลนาหนัง</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 15 บ้านนาเจริญ อ.โพนพิสัย จ.หนองคาย</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.โพนพิสัย จ.หนองคาย</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.">
+          <div class="img-slot img-slot-lg" data-slot="project-24">
+            <img src="assets/project-24.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลบ.ม. องค์การบริหารส่วนตำบลนาเชือก อ.นาเชือก จ.มหาสารคาม" width="665" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ถังเก็บน้ำ ขนาด 1,000 ลบ.ม.</div>
+            <h3>องค์การบริหารส่วนตำบลนาเชือก</h3>
+            <p>โครงการก่อสร้างถังเก็บน้ำ ขนาด 1,000 ลบ.ม. หมู่ 14 บ้านดำรงพัฒนา อ.นาเชือก จ.มหาสารคาม</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>1,000 ลบ.ม.</strong></div>
+              <div><span>พื้นที่</span><strong>อ.นาเชือก จ.มหาสารคาม</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-25">
+            <img src="assets/project-25.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านห้วยเจริญ ต.สามัคคี อ.น้ำโสม จ.อุดรธานี" width="670" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านห้วยเจริญ ต.สามัคคี อ.น้ำโสม จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.น้ำโสม จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-26">
+            <img src="assets/project-26.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านศรีบุญเรือง ต.บ้านตาด อ.เมือง จ.อุดรธานี" width="660" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านศรีบุญเรือง ต.บ้านตาด อ.เมือง จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมือง จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-27">
+            <img src="assets/project-27.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านบ่อโคลน ต.กุดสระ อ.เมือง จ.อุดรธานี" width="896" height="674" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านบ่อโคลน ต.กุดสระ อ.เมือง จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมือง จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-28">
+            <img src="assets/project-28.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านกุดสระ ต.กุดสระ อ.เมือง จ.อุดรธานี" width="774" height="581" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านกุดสระ ต.กุดสระ อ.เมือง จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมือง จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-29">
+            <img src="assets/project-29.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านเลิงทอง ต.นาข่า อ.เมือง จ.อุดรธานี" width="839" height="627" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านเลิงทอง ต.นาข่า อ.เมือง จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.เมือง จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="card project-card" data-tag="ระบบน้ำประปาดื่มได้">
+          <div class="img-slot img-slot-lg" data-slot="project-30">
+            <img src="assets/project-30.jpg" alt="โครงการพัฒนาระบบน้ำประปาดื่มได้ บ้านหนองไผ่ ต.นาทราย อ.พิบูลรักษ์ จ.อุดรธานี" width="668" height="499" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <div class="tag">ระบบน้ำประปาดื่มได้</div>
+            <h3>โครงการพัฒนาระบบน้ำประปาดื่มได้</h3>
+            <p>ขยายระบบกักเก็บน้ำต้นทุนและระบบผลิตน้ำประปาดื่มได้ บ้านหนองไผ่ ต.นาทราย อ.พิบูลรักษ์ จ.อุดรธานี</p>
+            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
+            <div class="stat-row">
+              <div><span>ขนาด</span><strong>—</strong></div>
+              <div><span>พื้นที่</span><strong>อ.พิบูลรักษ์ จ.อุดรธานี</strong></div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="grid grid-3" id="projects-grid">
-        <article class="card project-card" data-tag="ระบบกรองน้ำ">
-          <div class="img-slot img-slot-lg" data-slot="proj-1">
-            <img src="assets/proj-1.png" alt="โครงการระบบกรองน้ำชุมชน" width="461" height="384" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <div class="tag">ระบบกรองน้ำ</div>
-            <h3>โครงการตัวอย่าง — ระบบกรองน้ำชุมชน</h3>
-            <p>รอข้อมูลจริงจากบริษัท: ขอบเขตงาน กำลังผลิต และภาพหน้างาน</p>
-            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
-            <div class="stat-row">
-              <div><span>กำลังผลิต</span><strong>—</strong></div>
-              <div><span>พื้นที่</span><strong>—</strong></div>
-              <div><span>ปีที่ส่งมอบ</span><strong>—</strong></div>
-            </div>
-          </div>
-        </article>
-        <article class="card project-card" data-tag="ถังเก็บน้ำ">
-          <div class="img-slot img-slot-lg" data-slot="proj-2">
-            <img src="assets/proj-2.png" alt="โครงการถังเก็บและสำรองน้ำ" width="470" height="384" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <div class="tag">ถังเก็บน้ำ</div>
-            <h3>โครงการตัวอย่าง — ถังเก็บและสำรองน้ำ</h3>
-            <p>รอข้อมูลจริงจากบริษัท: ความจุถัง โครงสร้างฐาน และระบบควบคุมระดับน้ำ</p>
-            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
-            <div class="stat-row">
-              <div><span>กำลังผลิต</span><strong>—</strong></div>
-              <div><span>พื้นที่</span><strong>—</strong></div>
-              <div><span>ปีที่ส่งมอบ</span><strong>—</strong></div>
-            </div>
-          </div>
-        </article>
-        <article class="card project-card" data-tag="โซลาร์เซลล์">
-          <div class="img-slot img-slot-lg" data-slot="proj-3">
-            <img src="assets/proj-3.png" alt="โครงการระบบสูบน้ำพลังงานแสงอาทิตย์" width="503" height="384" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <div class="tag">โซลาร์เซลล์</div>
-            <h3>โครงการตัวอย่าง — ระบบสูบน้ำพลังงานแสงอาทิตย์</h3>
-            <p>รอข้อมูลจริงจากบริษัท: ขนาดแผง กำลังปั๊ม และปริมาณน้ำต่อวัน</p>
-            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
-            <div class="stat-row">
-              <div><span>กำลังผลิต</span><strong>—</strong></div>
-              <div><span>พื้นที่</span><strong>—</strong></div>
-              <div><span>ปีที่ส่งมอบ</span><strong>—</strong></div>
-            </div>
-          </div>
-        </article>
-        <article class="card project-card" data-tag="น้ำดื่ม" hidden>
-          <div class="img-slot img-slot-lg" data-slot="proj-4">
-            <img src="assets/proj-4.png" alt="โครงการระบบผลิตน้ำดื่ม" width="1448" height="1086" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <div class="tag">น้ำดื่ม</div>
-            <h3>โครงการตัวอย่าง — ระบบผลิตน้ำดื่มดื่มได้</h3>
-            <p>รอข้อมูลจริงจากบริษัท: มาตรฐานน้ำ ผลตรวจคุณภาพ และจุดจ่ายน้ำ</p>
-            <div class="project-scope">ขอบเขตงาน: ออกแบบ · ติดตั้ง · ส่งมอบ</div>
-            <div class="stat-row">
-              <div><span>กำลังผลิต</span><strong>—</strong></div>
-              <div><span>พื้นที่</span><strong>—</strong></div>
-              <div><span>ปีที่ส่งมอบ</span><strong>—</strong></div>
-            </div>
-          </div>
-        </article>
-      </div>
+      <nav class="pagination" id="projects-pagination" aria-label="เปลี่ยนหน้าผลงาน"></nav>
     </div>
   </section>
 
@@ -505,7 +888,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 SUPREME DGG CO., LTD. All rights reserved.</span>
-      <span>ข้อมูลผลงานและช่องทางติดต่อบางส่วนเป็น Placeholder</span>
+      <span>ข้อมูลติดต่อบางส่วนเป็น Placeholder</span>
     </div>
   </div>
 </footer>
