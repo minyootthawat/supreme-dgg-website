@@ -839,14 +839,6 @@ body[data-page="energy"] .nav-drop-trigger { color: var(--cyan); }
   background: var(--cyan);
 }
 
-.pending-note {
-  margin-top: 22px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: #8397AF;
-}
-
 /* ---------- CTA band ---------- */
 
 .cta-band { background: var(--tint); border-top: 1px solid var(--line-soft); padding: clamp(48px, 6vw, 76px) 0; }
@@ -861,3 +853,87 @@ body[data-page="energy"] .nav-drop-trigger { color: var(--cyan); }
 .cta-band p { margin: 0; max-width: 62ch; font-size: 16px; line-height: 1.7; color: var(--muted); }
 .fact-number-pending { font-family: 'IBM Plex Sans Thai', sans-serif; font-size: 22px; font-weight: 700; color: #8397AF; }
 .projects-filter-title { font-size: clamp(22px, 2.2vw, 28px); font-weight: 700; color: var(--navy); }
+
+/* ---------- DEMO MODE ----------
+   Everything below is driven by class="is-demo" on <body>. The banner is a
+   pure ::before so no page needs extra markup, and dropping the class from the
+   seven pages turns the whole layer off. Delete this block once the real
+   figures, partner names and photos land. */
+
+body.is-demo::before {
+  content: '⚠ DEMO — ตัวเลข ชื่อพาร์ตเนอร์ ข้อมูลติดต่อ และรูปภาพบางส่วนเป็นข้อมูลสมมติ เพื่อดูโครงเว็บไซต์เท่านั้น';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  background: #B45309;
+  color: #FFF7ED;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
+}
+
+body.is-demo .header { top: 34px; }
+body.is-demo:not([data-page="home"]) main { padding-top: calc(var(--header-h-scrolled) + 34px); }
+body.is-demo[data-page="home"] .hero { padding-top: 34px; }
+body.is-demo section[id], body.is-demo #contact-form { scroll-margin-top: 126px; }
+
+/* Per-value marker. Sits on the element holding a made-up value. */
+body.is-demo [data-demo]::after {
+  content: 'DEMO';
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #FEF3C7;
+  color: #92400E;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+body.is-demo .section-dark [data-demo]::after,
+body.is-demo .trust-bar [data-demo]::after,
+body.is-demo .footer [data-demo]::after { background: rgba(254, 243, 199, .16); color: #FCD34D; }
+
+/* Stand-in for a photo we do not have yet. Same aspect ratio as the real
+   .img-slot so the layout matches what the finished page will look like. */
+.demo-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 16px;
+  background: var(--tint);
+  border-bottom: 1px dashed #C3D3E5;
+  color: #8397AF;
+  text-align: center;
+}
+.demo-photo svg { opacity: .55; }
+.demo-photo strong { font-size: 14px; font-weight: 600; color: #6E8AAA; }
+.demo-photo span { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; }
+.demo-photo-logo { aspect-ratio: 5 / 2; border: 1px dashed #C3D3E5; border-radius: var(--radius-sm); }
+
+.demo-logo-row { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr)); margin-top: 22px; }
+
+@media print {
+  body.is-demo::before { position: static; height: auto; }
+  body.is-demo .header { top: 0; }
+}
+.tick-list small { display: inline-block; margin-top: 6px; font-size: 13.5px; font-weight: 400; line-height: 1.6; color: var(--muted); }
+@media (max-width: 720px) {
+  /* Shorter wording so the banner stays on one line inside its fixed height. */
+  body.is-demo::before { content: '⚠ DEMO — ข้อมูลบางส่วนเป็นข้อมูลสมมติ'; font-size: 12px; }
+}

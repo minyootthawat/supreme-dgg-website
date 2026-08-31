@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-page="about">
+<body data-page="about" class="is-demo">
 
 <header id="site-header" class="header">
   <div class="header-inner">
@@ -108,9 +108,9 @@
           <p>ครอบคลุมภาคเหนือ อีสาน กลาง และใต้</p>
         </div>
         <div class="card fact-card">
-          <span class="fact-number fact-number-pending">รอข้อมูล</span>
-          <strong>มูลค่าโครงการสะสม</strong>
-          <p>รอบริษัทยืนยันตัวเลขมูลค่าสัญญารวมเพื่อแสดงบนเว็บไซต์</p>
+          <span class="fact-number">1,850</span>
+          <strong data-demo>ล้านบาท · มูลค่าโครงการสะสม</strong>
+          <p>มูลค่าสัญญารวมของโครงการที่ส่งมอบแล้วตั้งแต่ปี 2552</p>
         </div>
       </div>
     </div>
@@ -162,11 +162,16 @@
           <h3>พาร์ตเนอร์ผู้ผลิต</h3>
           <p>เราทำงานร่วมกับโรงงานผู้ผลิตหลายแห่ง ทำให้ควบคุมคุณภาพ ต้นทุน และกำหนดส่งมอบได้ตั้งแต่ต้นทาง</p>
           <ul class="tick-list">
-            <li>ผู้ผลิตถังเก็บน้ำและถังกรอง</li>
-            <li>ผู้ผลิตแผ่นพีวีซีและวัสดุงานระบบ</li>
-            <li>ผู้จัดหาอุปกรณ์ระบบโซลาร์เซลล์ครบชุด</li>
+            <li data-demo>บริษัท ไทยแท้งค์ อินดัสทรี จำกัด — ถังเก็บน้ำและถังกรอง</li>
+            <li data-demo>บริษัท พีวีซี โพลีชีท จำกัด — แผ่นพีวีซีและวัสดุงานระบบ</li>
+            <li data-demo>บริษัท ฟูลโซลาร์ เอ็นเนอร์ยี จำกัด — อุปกรณ์โซลาร์เซลล์ครบชุด</li>
           </ul>
-          <div class="pending-note">รายชื่อและโลโก้พาร์ตเนอร์ — รอบริษัทยืนยัน</div>
+          <div class="demo-logo-row">
+            <div class="demo-photo demo-photo-logo"><span>LOGO</span></div>
+            <div class="demo-photo demo-photo-logo"><span>LOGO</span></div>
+            <div class="demo-photo demo-photo-logo"><span>LOGO</span></div>
+            <div class="demo-photo demo-photo-logo"><span>LOGO</span></div>
+          </div>
         </div>
 
         <div class="card collab-card">
@@ -174,10 +179,9 @@
           <h3>ความร่วมมือกับสถาบันการศึกษา</h3>
           <p>บันทึกข้อตกลงความร่วมมือเพื่อวิจัยและพัฒนาผลิตภัณฑ์ด้านน้ำและพลังงานทดแทน</p>
           <ul class="tick-list">
-            <li>มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา</li>
-            <li>มหาวิทยาลัยแม่โจ้</li>
+            <li>มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา<br><small data-demo>ลงนาม 12 มีนาคม 2566 — พัฒนาระบบกรองน้ำสำหรับชุมชน</small></li>
+            <li>มหาวิทยาลัยแม่โจ้<br><small data-demo>ลงนาม 5 กันยายน 2567 — แก๊สซิไฟเออร์และไบโอชาร์จากชีวมวลการเกษตร</small></li>
           </ul>
-          <div class="pending-note">วันที่ลงนามและขอบเขต MOU — รอบริษัทยืนยัน</div>
         </div>
       </div>
     </div>
@@ -265,9 +269,9 @@
       <div>
         <div class="footer-label">ติดต่อ</div>
         <div class="footer-contact">
-          <span>โทร. 0X-XXX-XXXX <em>(รอข้อมูล)</em></span>
-          <span>อีเมล example@domain.co.th <em>(รอข้อมูล)</em></span>
-          <span>LINE @placeholder <em>(รอข้อมูล)</em></span>
+          <span data-demo>โทร. 02-000-0000</span>
+          <span data-demo>อีเมล info@supremedgg.co.th</span>
+          <span data-demo>LINE @supremedgg</span>
         </div>
       </div>
       <div>
@@ -284,7 +288,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 SUPREME DGG CO., LTD. All rights reserved.</span>
-      <span>ข้อมูลติดต่อบางส่วนเป็น Placeholder</span>
+      <span>เวอร์ชัน DEMO — ข้อมูลบางส่วนเป็นข้อมูลสมมติ</span>
     </div>
   </div>
 </footer>
