@@ -1,0 +1,676 @@
+<meta charset="utf-8">
+<title>Ground Truth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   GROUND TRUTH — cinematic prototype, SUPREME DGG homepage
+   Kage's grammar (chaptered scroll, sticky scenes, huge bilingual display
+   type, grain and vignette), but the world behind it is the company's own
+   thirty photographs instead of a synthetic one. A built tank photographed
+   on site proves more than anything that could be modelled.
+   The night scenes carry the scale. The paper bands carry the proof.
+   Deliberately single-world: this page is a night, not a theme.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --night:    #0A1119;
+  --night-2:  #101A25;
+  --night-3:  #16222F;
+  --haze:     #E8E4DB;
+  --haze-dim: #9AA6B2;
+
+  --paper:    #F2EFE9;
+  --paper-2:  #E8E3D9;
+  --ink:      #12202F;
+
+  --brass:      #B08D2F;
+  --brass-ink:  #7D5F10;
+  --verified:   #3FA07E;
+  --water:      #4FC3E8;
+
+  --rule-dark: rgba(232, 228, 219, .15);
+  --rule:      #C9C2B4;
+
+  --display: 'Bai Jamjuree', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --body:    'IBM Plex Sans Thai', 'Bai Jamjuree', system-ui, sans-serif;
+  --data:    'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+  --gut: clamp(20px, 5vw, 72px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--haze);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 600; }
+p { margin: 0; }
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--brass); color: var(--night); }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gut); }
+
+/* ---------- fixed atmosphere ---------- */
+
+.grain, .vignette { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+
+/* One static turbulence tile, not an animated filter — the texture is the
+   point, the CPU cost is not. */
+.grain {
+  opacity: .34;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.vignette { box-shadow: inset 0 0 clamp(90px, 16vw, 260px) clamp(30px, 6vw, 90px) rgba(5, 9, 14, .82); }
+
+/* ---------- preloader ---------- */
+
+.pre {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--night);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 26px;
+  transition: opacity .7s ease, visibility .7s;
+}
+.pre.done { opacity: 0; visibility: hidden; }
+.pre-mark { font-family: var(--display); font-size: clamp(22px, 3.4vw, 34px); font-weight: 700; letter-spacing: .24em; }
+.pre-bar { width: min(280px, 60vw); height: 1px; background: var(--rule-dark); position: relative; overflow: hidden; }
+.pre-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--brass); transition: width .35s ease; }
+.pre-pct { font-family: var(--data); font-size: 11px; letter-spacing: .2em; color: var(--haze-dim); }
+
+/* ---------- nav ---------- */
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+  display: flex; align-items: center; gap: 24px;
+  padding: 20px var(--gut);
+  background: linear-gradient(to bottom, rgba(10, 17, 25, .88), rgba(10, 17, 25, 0));
+  border-bottom: 1px solid transparent;
+  transition: background .35s ease, padding .35s ease, border-color .35s ease;
+}
+.nav.pinned {
+  background: var(--night);
+  border-bottom-color: var(--rule-dark);
+  padding-top: 14px; padding-bottom: 14px;
+}
+.nav-brand { display: flex; flex-direction: column; line-height: 1.15; margin-right: auto; }
+.nav-brand b { font-family: var(--display); font-size: 17px; font-weight: 700; letter-spacing: .22em; }
+.nav-brand span { font-family: var(--data); font-size: 9px; letter-spacing: .22em; color: var(--haze-dim); }
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--haze); display: flex; flex-direction: column; line-height: 1.2; }
+.nav-links b { font-family: var(--display); font-size: 13.5px; font-weight: 600; letter-spacing: .1em; }
+.nav-links span { font-family: var(--data); font-size: 8.5px; letter-spacing: .18em; color: var(--haze-dim); }
+.nav-links a:hover b, .nav-links a:focus-visible b { color: var(--brass); }
+@media (max-width: 880px) {
+  .nav { flex-wrap: wrap; gap: 12px 24px; }
+  .nav-brand { margin-right: 0; width: 100%; }
+  .nav-links { gap: 18px; width: 100%; }
+  .nav-links span { display: none; }
+  .nav-links b { font-size: 12.5px; letter-spacing: .04em; }
+}
+
+/* ---------- scenes ---------- */
+
+.scene { position: relative; height: 240vh; }
+.scene-fix { position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; }
+.scene-fix > * { grid-area: 1 / 1; }
+
+.scene-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(var(--zoom, 1.14));
+  transform-origin: 50% 55%;
+  filter: brightness(.52) saturate(.78) contrast(1.08);
+  will-change: transform;
+}
+.scene-shade {
+  background:
+    linear-gradient(to right, rgba(6, 11, 17, .94) 0%, rgba(6, 11, 17, .8) 38%, rgba(6, 11, 17, .3) 76%, rgba(6, 11, 17, .12) 100%),
+    linear-gradient(to top, rgba(6, 11, 17, .9) 0%, rgba(6, 11, 17, .1) 55%);
+}
+.scene-body {
+  align-self: center;
+  width: 100%;
+  opacity: var(--in, 1);
+  transform: translateY(var(--rise, 0px));
+  text-shadow: 0 2px 24px rgba(5, 9, 14, .8), 0 1px 3px rgba(5, 9, 14, .5);
+}
+
+.hero .scene-shade {
+  background:
+    linear-gradient(to right, rgba(6, 11, 17, .92) 0%, rgba(6, 11, 17, .72) 46%, rgba(6, 11, 17, .28) 88%, rgba(6, 11, 17, .12) 100%),
+    linear-gradient(to top, rgba(6, 11, 17, .94) 0%, rgba(6, 11, 17, .08) 58%);
+}
+
+/* chapter mark */
+.ch-mark { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.ch-no { font-family: var(--data); font-size: 12px; font-weight: 600; letter-spacing: .2em; color: var(--brass); }
+.ch-rule { width: clamp(28px, 6vw, 88px); height: 1px; background: var(--brass); opacity: .55; }
+.ch-en { font-family: var(--data); font-size: 10.5px; letter-spacing: .26em; color: var(--haze-dim); text-transform: uppercase; }
+
+.ch-title {
+  font-size: clamp(34px, 6vw, 82px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  max-width: 15ch;
+  text-wrap: balance;
+}
+.ch-title em { font-style: normal; color: var(--brass); }
+
+.ch-lede { margin-top: 22px; max-width: 46ch; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.85; color: #C6CDD5; }
+
+.ch-facts { display: flex; flex-wrap: wrap; gap: 12px 42px; margin-top: 34px; }
+.ch-facts div { display: flex; flex-direction: column; gap: 2px; }
+.ch-facts b { font-family: var(--data); font-size: clamp(18px, 2vw, 25px); font-weight: 600; font-variant-numeric: tabular-nums; color: var(--haze); }
+.ch-facts span { font-size: 12.5px; color: #B6BEC7; }
+
+/* hero specifics */
+.hero-eyebrow { font-family: var(--data); font-size: 10.5px; letter-spacing: .3em; color: var(--brass); text-transform: uppercase; }
+.hero-title {
+  margin-top: 24px;
+  font-size: clamp(38px, 7.2vw, 96px);
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  max-width: 13ch;
+  text-wrap: balance;
+}
+.hero-sub { margin-top: 26px; max-width: 44ch; font-size: clamp(15px, 1.4vw, 18.5px); line-height: 1.85; color: #C6CDD5; }
+
+.scroll-cue {
+  position: absolute; left: var(--gut); bottom: 34px;
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--data); font-size: 10px; letter-spacing: .26em; color: #B6BEC7;
+  text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(5, 9, 14, .9);
+}
+.scroll-cue i { display: block; width: 46px; height: 1px; background: #B6BEC7; transform-origin: left; animation: sweep 2.4s ease-in-out infinite; }
+@keyframes sweep { 0%, 100% { transform: scaleX(.25); opacity: .5; } 50% { transform: scaleX(1); opacity: 1; } }
+
+/* ---------- chapter index (the four chapters, stated up front) ---------- */
+
+.index { background: var(--night-2); border-top: 1px solid var(--rule-dark); }
+.index-grid { display: grid; gap: 1px; background: var(--rule-dark); grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+.index-grid a { background: var(--night-2); padding: 30px 26px 34px; text-decoration: none; color: inherit; display: block; transition: background .3s ease; }
+.index-grid a:hover, .index-grid a:focus-visible { background: var(--night-3); }
+.index-grid .n { font-family: var(--data); font-size: 11px; letter-spacing: .2em; color: var(--brass); }
+.index-grid h3 { margin: 14px 0 4px; font-size: 21px; }
+.index-grid .en { font-family: var(--data); font-size: 9.5px; letter-spacing: .2em; color: var(--haze-dim); text-transform: uppercase; }
+.index-grid p { margin-top: 12px; font-size: 14px; line-height: 1.7; color: var(--haze-dim); }
+
+/* ---------- paper band: the hard cut from cinema to record ---------- */
+
+.band {
+  position: relative;
+  z-index: 70;
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 2px solid var(--brass);
+  padding: 26px 0;
+}
+.band-inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 40px; }
+.band-label { font-family: var(--data); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass-ink); }
+.band-row { display: flex; flex-wrap: wrap; gap: 8px 34px; }
+.band-row div { display: flex; align-items: baseline; gap: 9px; }
+.band-row dt { font-size: 13px; color: #5A6B7D; }
+.band-row dd { margin: 0; font-family: var(--data); font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.band-row .ok { color: var(--verified-ink, #0E6B4F); }
+
+/* ---------- the record: full paper section ---------- */
+
+.record { position: relative; z-index: 70; background: var(--paper); color: var(--ink); padding: clamp(64px, 9vw, 128px) 0; }
+.record-head { display: grid; grid-template-columns: 56px 1fr; gap: 0 20px; align-items: baseline; padding-bottom: 18px; border-bottom: 2px solid var(--ink); }
+.record-head .n { font-family: var(--data); font-size: 13px; font-weight: 600; letter-spacing: .1em; color: var(--brass-ink); }
+.record-head h2 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.2; letter-spacing: -.01em; }
+.record-head .en { grid-column: 2; font-family: var(--data); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: #5A6B7D; margin-top: 8px; }
+
+.ledger { width: 100%; border-collapse: collapse; margin-top: 34px; color: var(--ink); }
+.ledger th, .ledger td { text-align: left; padding: 13px 20px 13px 0; border-top: 1px solid var(--rule); font-size: 14.5px; }
+.ledger thead th { border-top: none; font-family: var(--data); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #5A6B7D; font-weight: 500; padding-bottom: 8px; }
+.ledger td.num { font-family: var(--data); font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.ledger td.cost { font-family: var(--data); font-variant-numeric: tabular-nums; font-weight: 600; color: var(--brass-ink); white-space: nowrap; }
+.ledger tfoot td { border-top: 2px solid var(--ink); font-weight: 600; padding-top: 15px; }
+.table-wrap { overflow-x: auto; }
+
+.sheet-strip { display: flex; gap: 1px; overflow-x: auto; background: var(--rule); border: 1px solid var(--rule); margin-top: 40px; scroll-snap-type: x mandatory; }
+.sheet-strip figure { margin: 0; flex: 1 0 128px; background: var(--paper); scroll-snap-align: start; }
+.sheet-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.sheet-strip figcaption { padding: 8px 10px 10px; font-family: var(--data); font-size: 10px; line-height: 1.55; color: #5A6B7D; font-variant-numeric: tabular-nums; }
+
+.seals { display: flex; flex-wrap: wrap; gap: 26px 44px; margin-top: 44px; padding-top: 28px; border-top: 2px solid var(--ink); }
+.seal { display: flex; align-items: center; gap: 15px; }
+.seal-mark { flex: none; width: 66px; height: 66px; display: grid; place-items: center; border: 1px dashed var(--brass-ink); border-radius: 50%; font-family: var(--data); font-size: 8.5px; letter-spacing: .1em; color: var(--brass-ink); text-align: center; }
+.seal b { display: block; font-family: var(--display); font-size: 15.5px; font-weight: 600; }
+.seal span { display: block; font-family: var(--data); font-size: 10.5px; letter-spacing: .08em; color: var(--brass-ink); margin-top: 2px; }
+
+/* ---------- closing ---------- */
+
+.close { position: relative; min-height: 82vh; display: grid; align-items: center; overflow: hidden; }
+.close-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.close-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(6, 11, 17, .96), rgba(6, 11, 17, .74)); }
+.close-body { position: relative; padding: clamp(56px, 8vw, 104px) 0; }
+.close h2 { font-size: clamp(30px, 5vw, 62px); line-height: 1.16; font-weight: 700; letter-spacing: -.02em; max-width: 17ch; text-wrap: balance; }
+.close p { margin-top: 22px; max-width: 46ch; color: var(--haze-dim); line-height: 1.85; }
+
+.cta {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-top: 34px; padding: 17px 30px;
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  text-decoration: none;
+  font-family: var(--data); font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+  transition: background .3s ease, color .3s ease;
+}
+.cta:hover, .cta:focus-visible { background: var(--brass); color: var(--night); }
+
+/* ---------- footer ---------- */
+
+.foot { background: var(--night); border-top: 1px solid var(--rule-dark); padding: 52px 0 40px; }
+.foot-grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); }
+.foot h4 { font-family: var(--data); font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--haze-dim); font-weight: 500; }
+.foot ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.foot li { font-size: 14px; color: var(--haze); }
+.foot-note { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule-dark); display: flex; flex-wrap: wrap; gap: 10px 28px; font-family: var(--data); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--haze-dim); }
+
+/* ---------- demo marker ---------- */
+
+[data-demo]::after {
+  content: 'DEMO';
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: rgba(176, 141, 47, .18);
+  color: var(--brass);
+  font-family: var(--data);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  vertical-align: middle;
+}
+.record [data-demo]::after, .band [data-demo]::after { background: #FEF3C7; color: var(--brass-ink); }
+
+@media (max-width: 700px) {
+  .scene { height: 190vh; }
+  .record-head { grid-template-columns: 1fr; }
+  .record-head .en { grid-column: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scene-img { transform: none !important; }
+  .scene-body { opacity: 1 !important; transform: none !important; }
+  .scroll-cue i { animation: none; }
+}
+</style>
+
+<div class="pre" id="pre">
+  <div class="pre-mark">SUPREME DGG</div>
+  <div class="pre-bar"><i class="pre-fill" id="pre-fill"></i></div>
+  <div class="pre-pct" id="pre-pct">0%</div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="nav-brand">
+    <b>SUPREME DGG</b>
+    <span>WATER · STRUCTURE · ENERGY</span>
+  </div>
+  <nav class="nav-links">
+    <a href="#ch01"><b>ระบบน้ำ</b><span>Water</span></a>
+    <a href="#ch02"><b>โครงสร้าง</b><span>Structure</span></a>
+    <a href="#ch03"><b>พลังงาน</b><span>Energy</span></a>
+    <a href="#record"><b>หลักฐาน</b><span>Record</span></a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ══════════ CHAPTER 00 — HERO ══════════ -->
+  <section class="scene hero" data-scene>
+    <div class="scene-fix">
+      <img class="scene-img" src="../assets/project-09.jpg" alt="งานก่อสร้างถังเก็บน้ำและหอถังสูง เทศบาลตำบลช่องแมว จังหวัดนครราชสีมา ระหว่างดำเนินการโดยทีมช่าง">
+      <div class="scene-shade"></div>
+      <div class="scene-body wrap">
+        <div class="hero-eyebrow">บทที่ 00 — สิ่งที่เราสร้างไว้แล้ว</div>
+        <h1 class="hero-title">สิ่งที่ยืนอยู่<br>คือหลักฐาน</h1>
+        <p class="hero-sub">สามสิบโครงการที่ส่งมอบให้ อบต. และเทศบาลใน 10 จังหวัด ทุกโครงการผ่านการจัดซื้อจัดจ้างภาครัฐ ตรวจรับแล้ว และยังเดินระบบอยู่จนถึงวันนี้</p>
+      </div>
+      <div class="scroll-cue"><i></i> เลื่อนลงเพื่อเริ่ม</div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap band-inner">
+      <span class="band-label">Registry</span>
+      <dl class="band-row">
+        <div><dt>ทะเบียนนิติบุคคล</dt><dd>0105552117513</dd></div>
+        <div><dt>จดทะเบียน</dt><dd>2552</dd></div>
+        <div><dt>โครงการส่งมอบแล้ว</dt><dd>30</dd></div>
+        <div><dt>จังหวัด</dt><dd>10</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ══════════ CHAPTER INDEX ══════════ -->
+  <section class="index">
+    <div class="index-grid">
+      <a href="#ch01">
+        <div class="n">01</div>
+        <h3>ระบบน้ำครบวงจร</h3>
+        <div class="en">Water Systems</div>
+        <p>ถังเก็บน้ำ ระบบกรอง และระบบผลิตน้ำประปาดื่มได้ ออกแบบจากผลวิเคราะห์น้ำต้นทางของแต่ละพื้นที่</p>
+      </a>
+      <a href="#ch02">
+        <div class="n">02</div>
+        <h3>วิศวกรรมและก่อสร้าง</h3>
+        <div class="en">Structure</div>
+        <p>งานโครงสร้าง อาคารราชการ อาคารเรียน และงานสถาปัตยกรรม ตั้งแต่ออกแบบจนถึงตรวจรับ</p>
+      </a>
+      <a href="#ch03">
+        <div class="n">03</div>
+        <h3>พลังงานทดแทน</h3>
+        <div class="en">Energy</div>
+        <p>โซลาร์เซลล์ ระบบกักเก็บพลังงาน แก๊สซิไฟเออร์ และไบโอชาร์ ทำให้ระบบเดินได้ทุกพื้นที่</p>
+      </a>
+      <a href="#record">
+        <div class="n">04</div>
+        <h3>หลักฐานและการรับรอง</h3>
+        <div class="en">The Record</div>
+        <p>ทะเบียนโครงการ มูลค่าสัญญา ตราความร่วมมือกับสถาบันการศึกษา และรูปงานที่ส่งมอบแล้ว</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════ CHAPTER 01 — WATER ══════════ -->
+  <section class="scene" id="ch01" data-scene>
+    <div class="scene-fix">
+      <img class="scene-img" src="../assets/project-08.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลูกบาศก์เมตร องค์การบริหารส่วนตำบลสุขเกษม อำเภอปักธงชัย จังหวัดนครราชสีมา">
+      <div class="scene-shade"></div>
+      <div class="scene-body wrap">
+        <div class="ch-mark"><span class="ch-no">01</span><span class="ch-rule"></span><span class="ch-en">Water Systems</span></div>
+        <h2 class="ch-title">น้ำที่ <em>ดื่มได้</em> ตั้งแต่วันส่งมอบ</h2>
+        <p class="ch-lede">ทุกระบบเริ่มจากผลวิเคราะห์น้ำต้นทางจริงในพื้นที่ ไม่ใช่แบบสำเร็จรูป ถังเก็บน้ำ ชุดสารกรอง และระบบฆ่าเชื้อถูกกำหนดจากค่าที่วัดได้ แล้วส่งมอบพร้อมผลตรวจคุณภาพน้ำ</p>
+        <div class="ch-facts">
+          <div><b>1,000</b><span>ลูกบาศก์เมตร · ความจุสูงสุดต่อถัง</span></div>
+          <div><b>24</b><span>โครงการถังเก็บน้ำที่ส่งมอบแล้ว</span></div>
+          <div><b>6</b><span>โครงการระบบประปาดื่มได้</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap band-inner">
+      <span class="band-label">Chapter 01 · Record</span>
+      <dl class="band-row">
+        <div><dt>ผู้ว่าจ้างล่าสุด</dt><dd>อบต.สุขเกษม</dd></div>
+        <div><dt>พื้นที่</dt><dd>อ.ปักธงชัย จ.นครราชสีมา</dd></div>
+        <div><dt>งบประมาณ</dt><dd data-demo>18,500,000 บาท</dd></div>
+        <div><dt>สถานะ</dt><dd class="ok">ตรวจรับแล้ว · 2567</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ══════════ CHAPTER 02 — STRUCTURE ══════════ -->
+  <section class="scene" id="ch02" data-scene>
+    <div class="scene-fix">
+      <img class="scene-img" src="../assets/project-02.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลูกบาศก์เมตร พร้อมป้ายโครงการ องค์การบริหารส่วนตำบลแม่สลิด จังหวัดตาก">
+      <div class="scene-shade"></div>
+      <div class="scene-body wrap">
+        <div class="ch-mark"><span class="ch-no">02</span><span class="ch-rule"></span><span class="ch-en">Structure</span></div>
+        <h2 class="ch-title">งานที่ต้อง <em>ตรวจรับ</em> ถึงจะจบ</h2>
+        <p class="ch-lede">งานโครงสร้าง อาคารราชการ อาคารเรียน และงานสถาปัตยกรรม บริษัทรับผิดชอบตั้งแต่สำรวจพื้นที่ ออกแบบ ประมาณราคา จัดเตรียมเอกสารจัดซื้อจัดจ้าง ก่อสร้าง จนถึงส่งมอบพร้อมแบบ As-built</p>
+        <div class="ch-facts">
+          <div><b>05</b><span>ขั้นตอน · สำรวจถึงตรวจรับ</span></div>
+          <div><b>e-GP</b><span>คุ้นเคยกระบวนการจัดซื้อจัดจ้างภาครัฐ</span></div>
+          <div><b>As-built</b><span>ส่งมอบพร้อมเอกสารและการรับประกัน</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap band-inner">
+      <span class="band-label">Chapter 02 · Record</span>
+      <dl class="band-row">
+        <div><dt>ประเภทงาน</dt><dd>อาคารสำนักงานเทศบาล 3 ชั้น</dd></div>
+        <div><dt>งบประมาณ</dt><dd data-demo>42,000,000 บาท</dd></div>
+        <div><dt>สถานะ</dt><dd class="ok" data-demo>ตรวจรับแล้ว · 2566</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ══════════ CHAPTER 03 — ENERGY ══════════ -->
+  <section class="scene" id="ch03" data-scene>
+    <div class="scene-fix">
+      <img class="scene-img" src="../assets/svc-solar.jpg" alt="แผงโซลาร์เซลล์ที่ติดตั้งบนหลังคาโครงการ จ่ายไฟให้ปั๊มน้ำและระบบควบคุม">
+      <div class="scene-shade"></div>
+      <div class="scene-body wrap">
+        <div class="ch-mark"><span class="ch-no">03</span><span class="ch-rule"></span><span class="ch-en">Energy</span></div>
+        <h2 class="ch-title">ระบบที่ <em>เดินได้</em> แม้ไฟเข้าไม่ถึง</h2>
+        <p class="ch-lede">พลังงานไม่ใช่สินค้าแยกชิ้น แต่เป็นส่วนที่ทำให้ระบบน้ำเดินได้ในพื้นที่ห่างไกล โซลาร์เซลล์ ระบบกักเก็บพลังงาน แก๊สซิไฟเออร์จากชีวมวล และไบโอชาร์ ออกแบบไปพร้อมกับระบบหลักตั้งแต่ต้นโครงการ</p>
+        <div class="ch-facts">
+          <div><b>4</b><span>ระบบพลังงานที่ออกแบบและติดตั้ง</span></div>
+          <div><b>2</b><span>MOU กับสถาบันการศึกษา</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 04 — THE RECORD ══════════ -->
+  <section class="record" id="record">
+    <div class="wrap">
+      <div class="record-head">
+        <span class="n">04</span>
+        <h2>หลักฐานและการรับรอง</h2>
+        <div class="en">The Record</div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr><th>ผู้ว่าจ้าง</th><th>พื้นที่</th><th>ขอบเขตงาน</th><th>มูลค่า</th><th>ส่งมอบ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>เทศบาลตำบลช่องแมว</td><td>จ.นครราชสีมา</td><td>ถังเก็บน้ำ 1,000 ม³</td><td class="cost" data-demo>19,200,000</td><td class="num">2567</td></tr>
+            <tr><td>อบต.สุขเกษม</td><td>จ.นครราชสีมา</td><td>ถังเก็บน้ำ 1,000 ม³</td><td class="cost" data-demo>18,500,000</td><td class="num">2567</td></tr>
+            <tr><td>เทศบาลตำบลหนองเรือ</td><td>จ.ขอนแก่น</td><td>ถังเก็บน้ำ 1,000 ม³</td><td class="cost" data-demo>17,800,000</td><td class="num">2566</td></tr>
+            <tr><td>อบต.นาหนัง</td><td>จ.หนองคาย</td><td>ถังเก็บน้ำ 1,000 ม³</td><td class="cost" data-demo>16,400,000</td><td class="num">2566</td></tr>
+            <tr><td>เทศบาลตำบลท่าตูม</td><td>จ.สระบุรี</td><td>ระบบประปาดื่มได้</td><td class="cost" data-demo>7,400,000</td><td class="num">2568</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3">รวมทั้งสิ้น 30 โครงการ · 10 จังหวัด</td><td class="cost" data-demo>1,850,000,000</td><td class="num">2552–2568</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="sheet-strip">
+        <figure><img src="../assets/project-01.jpg" alt="ถังเก็บน้ำ อบต.แม่สลิด จ.ตาก"><figcaption>ตาก · 2567<br>1,000 m³</figcaption></figure>
+        <figure><img src="../assets/project-14.jpg" alt="ถังเก็บน้ำ เทศบาลตำบลป่ามะนาว จ.ขอนแก่น"><figcaption>ขอนแก่น · 2566<br>500 m³</figcaption></figure>
+        <figure><img src="../assets/project-19.jpg" alt="ถังเก็บน้ำ เทศบาลตำบลตะกุด จ.สระบุรี"><figcaption>สระบุรี · 2567<br>500 m³</figcaption></figure>
+        <figure><img src="../assets/project-23.jpg" alt="ถังเก็บน้ำ อบต.นาหนัง จ.หนองคาย"><figcaption>หนองคาย · 2566<br>1,000 m³</figcaption></figure>
+        <figure><img src="../assets/project-25.jpg" alt="ระบบประปาดื่มได้ บ้านห้วยเจริญ จ.อุดรธานี"><figcaption>อุดรธานี · 2568<br>ประปาดื่มได้</figcaption></figure>
+        <figure><img src="../assets/project-29.jpg" alt="ระบบประปาดื่มได้ บ้านเลิงทอง จ.อุดรธานี"><figcaption>อุดรธานี · 2568<br>ประปาดื่มได้</figcaption></figure>
+      </div>
+
+      <div class="seals">
+        <div class="seal">
+          <div class="seal-mark">ตรา<br>รอไฟล์</div>
+          <div><b>มทร.ล้านนา</b><span data-demo>MOU · 12 มี.ค. 2566</span></div>
+        </div>
+        <div class="seal">
+          <div class="seal-mark">ตรา<br>รอไฟล์</div>
+          <div><b>มหาวิทยาลัยแม่โจ้</b><span data-demo>MOU · 5 ก.ย. 2567</span></div>
+        </div>
+        <div class="seal">
+          <div class="seal-mark">ตรา<br>รอไฟล์</div>
+          <div><b>ทะเบียนนิติบุคคล</b><span>0105552117513 · 2552</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CLOSING ══════════ -->
+  <section class="close">
+    <img class="close-img" src="../assets/project-21.jpg" alt="ระบบน้ำที่ติดตั้งแล้ว อบต.หน้าพระลาน จ.สระบุรี">
+    <div class="close-shade"></div>
+    <div class="wrap close-body">
+      <h2>ส่งขอบเขตงานมา แล้วเราจะบอกว่าทำได้แค่ไหน</h2>
+      <p>ทีมวิศวกรประเมินแนวทางระบบ ขอบเขตงาน และงบประมาณเบื้องต้นให้ภายใน 1–2 วันทำการ พร้อมเอกสารบริษัทและผลงานย้อนหลังสำหรับประกอบการจัดซื้อจัดจ้าง</p>
+      <a class="cta" href="#">ปรึกษาทีมวิศวกร &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>บทที่</h4>
+        <ul><li>ระบบน้ำครบวงจร</li><li>วิศวกรรมและก่อสร้าง</li><li>พลังงานทดแทน</li><li>หลักฐานและการรับรอง</li></ul>
+      </div>
+      <div>
+        <h4>ขอบเขตงาน</h4>
+        <ul><li>ถังเก็บและสำรองน้ำ</li><li>ระบบกรองและน้ำดื่ม</li><li>อาคารและงานโครงสร้าง</li><li>โซลาร์ · แก๊สซิไฟเออร์ · ไบโอชาร์</li></ul>
+      </div>
+      <div>
+        <h4>บริษัท</h4>
+        <ul>
+          <li>บริษัท ซูพรีม ดีจีจี จำกัด</li>
+          <li>ทะเบียน 0105552117513</li>
+          <li>139 ชั้น 2 ซอยสิรินธร 7 กรุงเทพมหานคร</li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อ</h4>
+        <ul>
+          <li data-demo>02-000-0000</li>
+          <li data-demo>info@supremedgg.co.th</li>
+          <li data-demo>LINE @supremedgg</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 SUPREME DGG CO., LTD.</span>
+      <span>Prototype · Ground Truth</span>
+      <span>ตัวเลขและตราที่กำกับ DEMO เป็นข้อมูลตัวอย่าง</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+/* ---------- preloader: tied to the four scene photographs, not a timer ---------- */
+(function () {
+  var pre = document.getElementById('pre');
+  var fill = document.getElementById('pre-fill');
+  var pct = document.getElementById('pre-pct');
+  var shots = [].slice.call(document.querySelectorAll('.scene-img'));
+  var done = 0;
+
+  function step() {
+    done++;
+    var p = Math.round(done / shots.length * 100);
+    fill.style.width = p + '%';
+    pct.textContent = p + '%';
+    if (done >= shots.length) setTimeout(finish, 320);
+  }
+
+  function finish() { pre.classList.add('done'); }
+
+  shots.forEach(function (img) {
+    if (img.complete) step();
+    else {
+      img.addEventListener('load', step);
+      img.addEventListener('error', step);
+    }
+  });
+
+  /* Never hold the page hostage to a photo that will not arrive. */
+  setTimeout(finish, 6000);
+})();
+
+/* ---------- nav state ----------
+   Past the hero the bar crosses paper sections, where a fading dark gradient
+   reads as a smudge. Off the opening scene it becomes a solid bar instead. */
+(function () {
+  var nav = document.querySelector('.nav');
+  var hero = document.querySelector('.hero');
+  if (!nav || !hero || !('IntersectionObserver' in window)) return;
+
+  new IntersectionObserver(function (entries) {
+    nav.classList.toggle('pinned', !entries[0].isIntersecting);
+  }, { rootMargin: '-70px 0px 0px 0px' }).observe(hero);
+})();
+
+/* ---------- scroll-driven scenes ----------
+   Each scene is a tall block with a sticky viewport inside it. Progress
+   through the block drives the photograph's scale and the copy's entrance,
+   so the image settles as you read it. No library, one rAF-throttled pass. */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches) return;
+
+  var scenes = [].slice.call(document.querySelectorAll('[data-scene]'));
+  if (!scenes.length) return;
+
+  var queued = false;
+
+  function clamp(n) { return n < 0 ? 0 : n > 1 ? 1 : n; }
+
+  function paint() {
+    queued = false;
+    var vh = window.innerHeight;
+
+    scenes.forEach(function (scene) {
+      var box = scene.getBoundingClientRect();
+      var span = box.height - vh;
+      if (span <= 0) return;
+
+      var p = clamp(-box.top / span);
+
+      /* The photo relaxes from 1.14 to 1.00 as the chapter is read. */
+      var img = scene.querySelector('.scene-img');
+      if (img) img.style.setProperty('--zoom', (1.14 - 0.14 * p).toFixed(4));
+
+      /* The copy is already in place when the scene pins, so it only lifts
+         away at the end — an entrance ramp here just hides the first frame. */
+      var body = scene.querySelector('.scene-body');
+      if (!body) return;
+      var outP = clamp((p - 0.78) / 0.22);
+      body.style.setProperty('--in', (1 - outP).toFixed(3));
+      body.style.setProperty('--rise', (-outP * 34).toFixed(1) + 'px');
+    });
+  }
+
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(paint);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  paint();
+})();
+</script>
