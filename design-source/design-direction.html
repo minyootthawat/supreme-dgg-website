@@ -31,6 +31,25 @@
   --data:    'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --gut: clamp(20px, 4vw, 56px);
+
+  /* Type scale, ~1.22 between steps. Two rules govern it:
+     1. 11.5px is for Latin and mono only. Thai never goes below 13px —
+        its vowels and tone marks sit above and below the consonant and
+        disappear before Latin does.
+     2. letter-spacing belongs to uppercase Latin only. Tracking a Thai
+        string pushes the marks away from the character they belong to
+        and breaks the word shape. */
+  --t-micro: 11.5px;
+  --t-meta:  13px;
+  --t-cap:   14.5px;
+  --t-body:  16.5px;
+  --t-lede:  18.5px;
+  --t-h4:    21px;
+  --t-h3:    25px;
+  --t-h2:    clamp(26px, 2.6vw, 34px);
+  --t-h1:    clamp(30px, 4.4vw, 54px);
+
+  --track: .18em;   /* Latin uppercase only */
 }
 
 * { box-sizing: border-box; }
@@ -40,8 +59,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: var(--t-body);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -63,19 +82,19 @@ a { color: var(--seal); }
 
 /* ---------- utility type ---------- */
 
-.data { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 12.5px; letter-spacing: .02em; }
+.data { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: var(--t-meta); }
 
 .label {
   font-family: var(--data);
-  font-size: 11px;
+  font-size: var(--t-micro);
   font-weight: 500;
-  letter-spacing: .16em;
+  letter-spacing: var(--track);
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.lede { font-size: 19px; line-height: 1.7; color: var(--ink); }
-.note { font-size: 14px; line-height: 1.7; color: var(--muted); }
+.lede { font-size: var(--t-lede); line-height: 1.75; color: var(--ink); }
+.note { font-size: var(--t-cap); line-height: 1.75; color: var(--muted); }
 
 /* ---------- masthead: the document cover ---------- */
 
@@ -89,20 +108,20 @@ a { color: var(--seal); }
   border-bottom: 1px solid var(--rule);
 }
 .masthead-meta div { display: flex; gap: 10px; align-items: baseline; }
-.masthead-meta dt { font-family: var(--data); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.masthead-meta dd { margin: 0; font-family: var(--data); font-size: 12.5px; font-weight: 500; color: var(--ink); }
+.masthead-meta dt { font-family: var(--data); font-size: var(--t-micro); letter-spacing: var(--track); text-transform: uppercase; color: var(--muted); }
+.masthead-meta dd { margin: 0; font-family: var(--data); font-size: var(--t-meta); font-weight: 500; color: var(--ink); }
 
 .masthead h1 {
   margin: 40px 0 0;
-  font-size: clamp(38px, 6vw, 68px);
-  line-height: 1.08;
+  font-size: var(--t-h1);
+  line-height: 1.22;
   font-weight: 700;
   text-wrap: balance;
 }
 .masthead .sub {
   margin-top: 6px;
   font-family: var(--display);
-  font-size: clamp(20px, 2.6vw, 28px);
+  font-size: clamp(18px, 2vw, 24px);
   font-weight: 400;
   color: var(--brass);
 }
@@ -122,12 +141,12 @@ a { color: var(--seal); }
 }
 .clause-num {
   font-family: var(--data);
-  font-size: 13px;
+  font-size: var(--t-meta);
   font-weight: 600;
   color: var(--brass);
   letter-spacing: .08em;
 }
-.clause-head h2 { font-size: clamp(26px, 3.2vw, 36px); line-height: 1.2; }
+.clause-head h2 { font-size: var(--t-h2); line-height: 1.3; }
 .clause-head .note { grid-column: 2; margin-top: 10px; }
 
 .clause-body { margin-top: 34px; display: grid; gap: 34px; }
@@ -135,7 +154,7 @@ a { color: var(--seal); }
    which lets the contact sheet and the wide tables push the page sideways. */
 .clause-body > * { min-width: 0; }
 
-h3 { font-size: 20px; line-height: 1.4; }
+h3 { font-size: var(--t-h4); line-height: 1.4; }
 h3 + p, h3 + .note { margin-top: 10px; }
 
 /* ---------- palette ---------- */
@@ -151,17 +170,16 @@ h3 + p, h3 + .note { margin-top: 10px; }
   background: var(--paper);
 }
 .swatch-chip { height: 44px; border: 1px solid rgba(18, 32, 47, .18); }
-.swatch-name { font-family: var(--data); font-size: 12.5px; font-weight: 600; }
-.swatch-role { font-size: 14px; color: var(--muted); line-height: 1.55; margin-top: 2px; }
+.swatch-name { font-family: var(--data); font-size: var(--t-meta); font-weight: 600; }
+.swatch-role { font-size: var(--t-cap); color: var(--muted); line-height: 1.6; margin-top: 3px; }
 .swatch-ratio {
-  font-family: var(--data);
-  font-size: 12px;
+  font-size: var(--t-meta);
   font-variant-numeric: tabular-nums;
   text-align: right;
   white-space: nowrap;
   color: var(--muted);
 }
-.swatch-ratio b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); }
+.swatch-ratio b { display: block; font-family: var(--data); font-size: var(--t-cap); font-weight: 600; color: var(--ink); }
 .swatch-ratio .pass { color: var(--verified); }
 .swatch-ratio .limit { color: var(--brass); }
 
@@ -170,37 +188,37 @@ h3 + p, h3 + .note { margin-top: 10px; }
 .compare .panel { padding: 26px 22px 24px; }
 .compare .before { background: #F4F7FA; }
 .compare .after  { background: var(--paper); }
-.compare .fig-num { font-family: var(--data); font-size: 34px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.compare .fig-num { font-family: var(--data); font-size: 30px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
 .compare .before .fig-num { color: #35B8E8; }
 .compare .after  .fig-num { color: var(--brass); }
-.compare .fig-cap { font-size: 13.5px; margin-top: 8px; }
+.compare .fig-cap { font-size: var(--t-meta); margin-top: 8px; }
 .compare .before .fig-cap { color: #4C6180; }
 .compare .after  .fig-cap { color: var(--muted); }
-.compare figcaption { padding: 12px 22px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+.compare figcaption { padding: 12px 22px; border-top: 1px solid var(--rule); font-size: var(--t-meta); color: var(--muted); }
 
 /* ---------- type specimen ---------- */
 
 .specimen { border-top: 1px solid var(--rule); padding-top: 22px; }
 .specimen + .specimen { margin-top: 6px; }
 .specimen-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; margin-bottom: 16px; }
-.specimen-meta .role { font-family: var(--data); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
-.specimen-meta .face { font-family: var(--data); font-size: 12.5px; font-weight: 600; }
-.specimen-meta .why { font-size: 13.5px; color: var(--muted); }
+.specimen-meta .role { font-family: var(--data); font-size: var(--t-micro); letter-spacing: var(--track); text-transform: uppercase; color: var(--brass); }
+.specimen-meta .face { font-family: var(--data); font-size: var(--t-meta); font-weight: 600; }
+.specimen-meta .why { font-size: var(--t-cap); color: var(--muted); }
 
-.sp-display { font-family: var(--display); font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; line-height: 1.15; letter-spacing: -.015em; }
-.sp-body { font-family: var(--body); font-size: 17px; line-height: 1.8; max-width: 62ch; }
-.sp-data { font-family: var(--data); font-size: clamp(22px, 3vw, 32px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.sp-display { font-family: var(--display); font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; line-height: 1.28; letter-spacing: -.005em; }
+.sp-body { font-family: var(--body); font-size: var(--t-body); line-height: 1.85; max-width: 62ch; }
+.sp-data { font-family: var(--data); font-size: clamp(20px, 2.4vw, 28px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
 
 .scale-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 22px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule); }
 .scale-row span { font-family: var(--display); font-weight: 600; line-height: 1; }
-.scale-row i { font-family: var(--data); font-style: normal; font-size: 10.5px; color: var(--muted); }
+.scale-row i { font-style: normal; font-size: var(--t-meta); color: var(--muted); }
 
 /* ---------- THE SIGNATURE: ป้ายโครงการ ---------- */
 
 .placard { border: 1px solid var(--ink); background: var(--paper); max-width: 460px; }
 .placard-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .placard-plate { border-top: 2px solid var(--brass-line); padding: 16px 18px 6px; background: var(--paper-2); }
-.placard-plate h4 { font-size: 17px; line-height: 1.4; font-weight: 600; }
+.placard-plate h4 { font-size: var(--t-h4); line-height: 1.4; font-weight: 600; }
 .placard-rows { margin: 14px 0 0; display: grid; }
 .placard-rows div {
   display: grid;
@@ -210,18 +228,16 @@ h3 + p, h3 + .note { margin-top: 10px; }
   padding: 9px 0;
   border-top: 1px solid var(--paper-3);
 }
-.placard-rows dt { font-size: 13px; color: var(--muted); }
-.placard-rows dd { margin: 0; font-size: 14.5px; font-weight: 500; }
-.placard-rows dd.num { font-family: var(--data); font-size: 14px; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.placard-rows dt { font-size: var(--t-cap); color: var(--muted); }
+.placard-rows dd { margin: 0; font-size: var(--t-cap); font-weight: 500; }
+.placard-rows dd.num { font-family: var(--data); font-size: var(--t-cap); font-variant-numeric: tabular-nums; }
 .stamp {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   margin-left: 10px;
-  font-family: var(--data);
-  font-size: 10.5px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font-size: var(--t-meta);
+  font-weight: 600;
   color: var(--verified);
 }
 .stamp::before { content: ''; width: 9px; height: 9px; border: 1.5px solid currentColor; border-radius: 50%; }
@@ -230,30 +246,30 @@ h3 + p, h3 + .note { margin-top: 10px; }
 .anatomy ol { margin: 0; padding: 0; list-style: none; display: grid; }
 .anatomy li { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 13px 0; border-top: 1px solid var(--rule); }
 .anatomy li:last-child { border-bottom: 1px solid var(--rule); }
-.anatomy li b { font-family: var(--data); font-size: 12px; font-weight: 600; color: var(--brass); }
-.anatomy li span { font-size: 14.5px; line-height: 1.65; }
+.anatomy li b { font-family: var(--data); font-size: var(--t-meta); font-weight: 600; color: var(--brass); }
+.anatomy li span { font-size: var(--t-cap); line-height: 1.7; }
 .anatomy li span em { font-style: normal; font-weight: 600; }
 
 /* ---------- photo tiers ---------- */
 
 .tier { border-top: 1px solid var(--rule); padding-top: 24px; }
 .tier-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; margin-bottom: 8px; }
-.tier-head .n { font-family: var(--data); font-size: 11px; letter-spacing: .16em; color: var(--brass); text-transform: uppercase; }
-.tier-head h3 { font-size: 21px; }
+.tier-head .n { font-size: var(--t-meta); font-weight: 600; color: var(--brass); }
+.tier-head h3 { font-size: var(--t-h4); }
 .tier > p { margin-bottom: 22px; }
 
 /* tier 1 — split hero */
 .hero-demo { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); border: 1px solid var(--rule); }
 .hero-demo .copy { padding: clamp(22px, 3.4vw, 40px); display: flex; flex-direction: column; justify-content: center; gap: 14px; background: var(--paper); }
-.hero-demo .copy h4 { font-size: clamp(21px, 2.8vw, 31px); line-height: 1.22; }
-.hero-demo .copy .kicker { font-family: var(--data); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--water); }
+.hero-demo .copy h4 { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.35; }
+.hero-demo .copy .kicker { font-family: var(--data); font-size: var(--t-micro); letter-spacing: var(--track); text-transform: uppercase; color: var(--water); }
 .hero-demo img { display: block; width: 100%; height: 100%; min-height: 240px; object-fit: cover; }
 
 /* tier 2 — contact sheet */
 .contact-sheet { display: flex; gap: 1px; overflow-x: auto; background: var(--rule); border: 1px solid var(--rule); scroll-snap-type: x mandatory; }
-.contact-sheet figure { margin: 0; flex: 1 0 132px; background: var(--paper); scroll-snap-align: start; }
+.contact-sheet figure { margin: 0; flex: 1 0 150px; background: var(--paper); scroll-snap-align: start; }
 .contact-sheet img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
-.contact-sheet figcaption { padding: 8px 10px 10px; font-family: var(--data); font-size: 10.5px; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
+.contact-sheet figcaption { padding: 9px 11px 12px; font-size: var(--t-meta); line-height: 1.6; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* tier 3 — weighted grid */
 /* The lead project takes two columns and both rows; the two smaller ones stack
@@ -265,14 +281,14 @@ h3 + p, h3 + .note { margin-top: 10px; }
 .weighted img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .weighted > *:first-child img { aspect-ratio: auto; flex: 1; min-height: 260px; }
 .weighted .plate { border-top: 2px solid var(--brass-line); padding: 12px 14px 14px; background: var(--paper-2); }
-.weighted h4 { font-size: 15.5px; line-height: 1.4; }
-.weighted .cost { margin-top: 8px; font-family: var(--data); font-size: 15px; font-weight: 600; color: var(--brass); font-variant-numeric: tabular-nums; }
-.weighted .where { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.weighted h4 { font-size: var(--t-cap); line-height: 1.45; }
+.weighted .cost { margin-top: 8px; font-family: var(--data); font-size: var(--t-body); font-weight: 600; color: var(--brass); font-variant-numeric: tabular-nums; }
+.weighted .where { font-size: var(--t-meta); color: var(--muted); margin-top: 3px; }
 
 .ratio-note { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); margin-top: 6px; }
 .ratio-note div { border-left: 2px solid var(--seal); padding: 4px 0 4px 14px; }
-.ratio-note b { font-family: var(--data); font-size: 13px; display: block; }
-.ratio-note span { font-size: 13.5px; color: var(--muted); }
+.ratio-note b { font-family: var(--data); font-size: var(--t-cap); font-weight: 600; display: block; }
+.ratio-note span { font-size: var(--t-meta); color: var(--muted); }
 
 /* ---------- MOU seals ---------- */
 
@@ -285,31 +301,30 @@ h3 + p, h3 + .note { margin-top: 10px; }
   display: grid; place-items: center;
   border: 1px dashed var(--brass-line);
   border-radius: 50%;
-  font-family: var(--data);
-  font-size: 9px;
-  letter-spacing: .1em;
+  font-size: var(--t-meta);
+  line-height: 1.4;
   color: var(--brass);
   text-align: center;
 }
-.seal-mark.sm { width: 40px; height: 40px; font-size: 7.5px; }
-.seal-text strong { display: block; font-family: var(--display); font-size: 16px; font-weight: 600; line-height: 1.35; }
-.seal-text .when { font-family: var(--data); font-size: 11px; letter-spacing: .08em; color: var(--brass); margin-top: 3px; }
+.seal-mark.sm { width: 46px; height: 46px; font-size: var(--t-micro); }
+.seal-text strong { display: block; font-family: var(--display); font-size: var(--t-h4); font-weight: 600; line-height: 1.35; }
+.seal-text .when { font-size: var(--t-meta); color: var(--brass); margin-top: 3px; }
 
 .placement { display: grid; gap: 18px; }
 .placement > div { display: grid; grid-template-columns: 84px 1fr; gap: 20px; padding-top: 16px; border-top: 1px solid var(--rule); }
-.placement .where { font-family: var(--data); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--brass); padding-top: 3px; }
-.placement h4 { font-size: 17px; }
-.placement p { margin-top: 6px; font-size: 14.5px; line-height: 1.7; color: var(--muted); }
+.placement .where { font-size: var(--t-meta); font-weight: 600; color: var(--brass); padding-top: 5px; }
+.placement h4 { font-size: var(--t-h4); }
+.placement p { margin-top: 8px; font-size: var(--t-cap); line-height: 1.75; color: var(--muted); }
 
 .footer-band { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; }
-.footer-band .cap { font-family: var(--data); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.footer-band .cap { font-size: var(--t-meta); color: var(--muted); }
 
 /* ---------- cut list ---------- */
 
 .cuts { width: 100%; border-collapse: collapse; }
-.cuts caption { text-align: left; font-size: 14px; color: var(--muted); padding-bottom: 14px; }
-.cuts th, .cuts td { text-align: left; vertical-align: top; padding: 14px 18px 14px 0; border-top: 1px solid var(--rule); font-size: 14.5px; line-height: 1.65; }
-.cuts thead th { border-top: 2px solid var(--ink); font-family: var(--data); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding-bottom: 10px; }
+.cuts caption { text-align: left; font-size: var(--t-cap); color: var(--muted); padding-bottom: 16px; }
+.cuts th, .cuts td { text-align: left; vertical-align: top; padding: 16px 18px 16px 0; border-top: 1px solid var(--rule); font-size: var(--t-cap); line-height: 1.75; }
+.cuts thead th { border-top: 2px solid var(--ink); font-size: var(--t-meta); color: var(--muted); font-weight: 600; padding-bottom: 10px; }
 .cuts tbody th { font-weight: 600; width: 30%; }
 .cuts td:last-child { padding-right: 0; }
 .cuts .keep { color: var(--verified); font-weight: 600; }
@@ -512,10 +527,11 @@ h3 + p, h3 + .note { margin-top: 10px; }
         </div>
         <div class="sp-display">งานวิศวกรรมที่ตรวจสอบได้</div>
         <div class="scale-row">
-          <span style="font-size:48px">48<i> หัวหน้า</i></span>
+          <span style="font-size:54px">54<i> ปกเอกสาร</i></span>
+          <span style="font-size:44px">44<i> หัวหน้า</i></span>
           <span style="font-size:34px">34<i> หัวข้อ</i></span>
-          <span style="font-size:24px">24<i> หัวรอง</i></span>
-          <span style="font-size:19px">19<i> นำเรื่อง</i></span>
+          <span style="font-size:25px">25<i> ตัวเลขสำคัญ</i></span>
+          <span style="font-size:21px">21<i> หัวรอง</i></span>
         </div>
       </div>
 
@@ -537,7 +553,41 @@ h3 + p, h3 + .note { margin-top: 10px; }
         <div class="sp-data">18,500,000 · 1,000 m³ · 2567 · 0105552117513</div>
       </div>
 
-      <p class="note"><strong>ข้อจำกัดที่ต้องรู้:</strong> IBM Plex Mono ไม่รองรับอักษรไทย ใช้ได้เฉพาะตัวเลขและละติน ป้ายกำกับภาษาไทยที่อยู่ข้างกันต้องใช้ Plex Sans Thai และต้องจัด baseline ให้ตรงกันในแถวเดียว</p>
+      <div>
+        <h3>สเกลตัวอักษรและกฎสองข้อของภาษาไทย</h3>
+        <p class="note">ระบบเดิมของแบบร่างชุดแรกมีช่วงตั้งแต่ 8.5px ถึง 96px และมีรูโหว่ระหว่าง 21px กับ 44px ที่ไม่มีขนาดใดอยู่เลย ทำให้อันใหญ่ใหญ่เกินและอันเล็กอ่านไม่ออก สเกลใหม่มีสิบขั้น ห่างกันประมาณ 1.22 เท่า และมีกฎบังคับสองข้อที่มาจากตัวภาษาเอง</p>
+      </div>
+
+      <div class="ratio-note">
+        <div>
+          <b>11.5px คือพื้นล่างของละตินเท่านั้น</b>
+          <span>ตัวไทยห้ามต่ำกว่า 13px เพราะสระและวรรณยุกต์อยู่เหนือและใต้พยัญชนะ มันหายไปก่อนตัวละตินเสมอ</span>
+        </div>
+        <div>
+          <b>letter-spacing ใช้กับละตินตัวใหญ่เท่านั้น</b>
+          <span>การถ่างตัวไทยดันวรรณยุกต์ออกจากพยัญชนะที่มันสังกัด รูปคำแตก อ่านช้าลงทันที</span>
+        </div>
+        <div>
+          <b>IBM Plex Mono ไม่มีอักษรไทย</b>
+          <span>ใช้ได้เฉพาะตัวเลขและละติน ป้ายกำกับไทยข้าง ๆ ต้องเป็น Plex Sans Thai และจัด baseline ให้ตรงกัน</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="cuts">
+          <thead>
+            <tr><th>ขั้น</th><th>ใช้กับ</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>54 / 44</th><td>ปกเอกสารและหัวบท — ใช้ครั้งเดียวต่อหน้า</td></tr>
+            <tr><th>34 / 25</th><td>หัวข้อ section และตัวเลขสำคัญที่ต้องอ่านข้ามหน้าได้</td></tr>
+            <tr><th>21 / 18.5</th><td>หัวรองและย่อหน้านำเรื่อง</td></tr>
+            <tr><th>16.5 / 14.5</th><td>เนื้อความ และคำอธิบายใต้ภาพหรือในตาราง</td></tr>
+            <tr><th>13</th><td>พื้นล่างของตัวไทยทั้งหมด — ป้ายกำกับ หัวตาราง สถานะ</td></tr>
+            <tr><th>11.5</th><td>ละตินและ mono ตัวใหญ่เท่านั้น <span class="keep">ห้ามใช้กับตัวไทย</span></td></tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </section>
@@ -709,9 +759,9 @@ h3 + p, h3 + .note { margin-top: 10px; }
 
       <div class="footer-band">
         <span class="cap">ตัวอย่างแถบใน footer</span>
-        <div class="seal-mark sm">ตรา</div>
-        <div class="seal-mark sm">ตรา</div>
-        <div class="seal-mark sm">ตรา</div>
+        <div class="seal-mark sm">SEAL</div>
+        <div class="seal-mark sm">SEAL</div>
+        <div class="seal-mark sm">SEAL</div>
         <span class="data" style="color:var(--muted)">MOU 2566 · MOU 2567 · จดทะเบียน 2552</span>
       </div>
 
