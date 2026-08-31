@@ -130,8 +130,7 @@ h1, h2, h3, h4 { margin: 0; }
 }
 
 .header.is-scrolled,
-.header.is-menu-open,
-body:not([data-page="home"]) .header {
+.header.is-menu-open {
   height: var(--header-h-scrolled);
   background: #FFFFFF;
   border-bottom-color: var(--line-soft);
@@ -227,7 +226,7 @@ body:not([data-page="home"]) .header {
 .hero {
   position: relative;
   width: 100%;
-  min-height: min(88vh, 860px);
+  min-height: min(72vh, 640px);
   display: flex;
   align-items: flex-end;
   background: var(--navy);
@@ -271,7 +270,7 @@ body:not([data-page="home"]) .header {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 180px 24px 72px;
+  padding: clamp(124px, 14vw, 148px) 24px clamp(44px, 5vw, 60px);
 }
 .hero-content > div { max-width: 720px; }
 
@@ -620,10 +619,9 @@ body:not([data-page="home"]) .header {
 
 /* ---------- Multi-page shell ---------- */
 
-/* Inner pages have no dark hero behind the fixed header, so the header sits in
-   its solid state from the start (see the .is-scrolled rule above) and the page
-   content starts below it. */
-body:not([data-page="home"]) main { padding-top: var(--header-h-scrolled); }
+/* Every page now opens on a photo hero, so the header starts transparent over
+   it on inner pages too and flips solid on scroll (see the .is-scrolled rule
+   above). The hero's own top padding is what clears the fixed header. */
 
 /* ---------- Nav dropdown ---------- */
 
@@ -705,12 +703,19 @@ body[data-page="energy"] .nav-drop-trigger { color: var(--cyan); }
 
 /* ---------- Page hero (inner pages) ---------- */
 
+/* Inner-page heroes carry the same photo + scrim layer as the homepage hero,
+   so .hero-media (and its ::before scrim / ::after grid) is reused verbatim.
+   Every page currently points at assets/hero.png; swap the src per page as
+   the real photos arrive — data-slot names the intended shot. */
 .page-hero {
+  position: relative;
+  overflow: hidden;
   background: var(--navy);
   color: #FFFFFF;
-  padding: clamp(56px, 7vw, 96px) 0 clamp(52px, 6vw, 84px);
+  padding: clamp(112px, 12vw, 152px) 0 clamp(44px, 5vw, 68px);
 }
-.page-hero-tight { padding-bottom: clamp(36px, 4vw, 56px); }
+.page-hero > .wrap { position: relative; z-index: 1; }
+.page-hero-tight { padding-bottom: clamp(32px, 4vw, 48px); }
 .page-hero h1 {
   margin: 0 0 20px;
   max-width: 30ch;
@@ -770,6 +775,14 @@ body[data-page="energy"] .nav-drop-trigger { color: var(--cyan); }
 .line-card:hover .line-link { color: var(--cyan); }
 
 /* ---------- Water spotlight (homepage) ---------- */
+
+/* .img-slot takes its height from the parent; on the homepage core block there
+   is no card wrapper to supply one, so set the ratio here. */
+.core-photo { aspect-ratio: 4 / 3; border-radius: var(--radius); }
+.core-intro { align-items: center; margin-bottom: 40px; }
+.core-copy p { margin: 0; font-size: 16px; line-height: 1.8; color: var(--muted); }
+.core-copy .btn { margin-top: 26px; }
+.provenance-detail { margin-top: 48px; }
 
 .spotlight-steps {
   display: grid;
@@ -880,8 +893,8 @@ body.is-demo::before {
 }
 
 body.is-demo .header { top: 34px; }
-body.is-demo:not([data-page="home"]) main { padding-top: calc(var(--header-h-scrolled) + 34px); }
 body.is-demo[data-page="home"] .hero { padding-top: 34px; }
+body.is-demo .page-hero { padding-top: calc(clamp(112px, 12vw, 152px) + 34px); }
 body.is-demo section[id], body.is-demo #contact-form { scroll-margin-top: 126px; }
 
 /* Per-value marker. Sits on the element holding a made-up value. */
