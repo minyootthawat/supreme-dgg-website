@@ -1,0 +1,830 @@
+<meta charset="utf-8">
+<title>Public Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   PUBLIC RECORD — design direction for SUPREME DGG
+   This document is built with the system it proposes. Every color,
+   rule and type size on this page is the specimen.
+   Single visual world on purpose: ink on document stock. No dark
+   variant — the whole thesis is that the page is a paper record.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ink:        #12202F;
+  --paper:      #F2EFE9;
+  --paper-2:    #E8E3D9;
+  --paper-3:    #DDD7CA;
+  --seal:       #16457A;
+  --brass:      #7D5F10;
+  --brass-line: #B08D2F;
+  --verified:   #0E6B4F;
+  --water:      #1E7FA8;
+  --rule:       #C9C2B4;
+  --muted:      #5A6B7D;
+
+  --display: 'Bai Jamjuree', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --body:    'IBM Plex Sans Thai', 'Bai Jamjuree', system-ui, sans-serif;
+  --data:    'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --gut: clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gut) 96px;
+}
+
+h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 600; letter-spacing: -.01em; }
+
+p { margin: 0; max-width: 66ch; }
+
+a { color: var(--seal); }
+
+::selection { background: var(--brass-line); color: var(--paper); }
+
+:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+
+/* ---------- utility type ---------- */
+
+.data { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 12.5px; letter-spacing: .02em; }
+
+.label {
+  font-family: var(--data);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lede { font-size: 19px; line-height: 1.7; color: var(--ink); }
+.note { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* ---------- masthead: the document cover ---------- */
+
+.masthead { border-top: 3px solid var(--seal); padding-top: 26px; margin-top: 0; }
+
+.masthead-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.masthead-meta div { display: flex; gap: 10px; align-items: baseline; }
+.masthead-meta dt { font-family: var(--data); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.masthead-meta dd { margin: 0; font-family: var(--data); font-size: 12.5px; font-weight: 500; color: var(--ink); }
+
+.masthead h1 {
+  margin: 40px 0 0;
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.08;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.masthead .sub {
+  margin-top: 6px;
+  font-family: var(--display);
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 400;
+  color: var(--brass);
+}
+.masthead .lede { margin-top: 28px; }
+
+/* ---------- numbered sections (this really is a clause document) ---------- */
+
+.clause { margin-top: 88px; }
+
+.clause-head {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 20px;
+  align-items: baseline;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--ink);
+}
+.clause-num {
+  font-family: var(--data);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brass);
+  letter-spacing: .08em;
+}
+.clause-head h2 { font-size: clamp(26px, 3.2vw, 36px); line-height: 1.2; }
+.clause-head .note { grid-column: 2; margin-top: 10px; }
+
+.clause-body { margin-top: 34px; display: grid; gap: 34px; }
+/* Grid items default to min-width:auto and refuse to shrink below their content,
+   which lets the contact sheet and the wide tables push the page sideways. */
+.clause-body > * { min-width: 0; }
+
+h3 { font-size: 20px; line-height: 1.4; }
+h3 + p, h3 + .note { margin-top: 10px; }
+
+/* ---------- palette ---------- */
+
+.swatches { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+
+.swatch {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--paper);
+}
+.swatch-chip { height: 44px; border: 1px solid rgba(18, 32, 47, .18); }
+.swatch-name { font-family: var(--data); font-size: 12.5px; font-weight: 600; }
+.swatch-role { font-size: 14px; color: var(--muted); line-height: 1.55; margin-top: 2px; }
+.swatch-ratio {
+  font-family: var(--data);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.swatch-ratio b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); }
+.swatch-ratio .pass { color: var(--verified); }
+.swatch-ratio .limit { color: var(--brass); }
+
+.compare { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.compare figure { margin: 0; border: 1px solid var(--rule); }
+.compare .panel { padding: 26px 22px 24px; }
+.compare .before { background: #F4F7FA; }
+.compare .after  { background: var(--paper); }
+.compare .fig-num { font-family: var(--data); font-size: 34px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.compare .before .fig-num { color: #35B8E8; }
+.compare .after  .fig-num { color: var(--brass); }
+.compare .fig-cap { font-size: 13.5px; margin-top: 8px; }
+.compare .before .fig-cap { color: #4C6180; }
+.compare .after  .fig-cap { color: var(--muted); }
+.compare figcaption { padding: 12px 22px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+
+/* ---------- type specimen ---------- */
+
+.specimen { border-top: 1px solid var(--rule); padding-top: 22px; }
+.specimen + .specimen { margin-top: 6px; }
+.specimen-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; margin-bottom: 16px; }
+.specimen-meta .role { font-family: var(--data); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.specimen-meta .face { font-family: var(--data); font-size: 12.5px; font-weight: 600; }
+.specimen-meta .why { font-size: 13.5px; color: var(--muted); }
+
+.sp-display { font-family: var(--display); font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; line-height: 1.15; letter-spacing: -.015em; }
+.sp-body { font-family: var(--body); font-size: 17px; line-height: 1.8; max-width: 62ch; }
+.sp-data { font-family: var(--data); font-size: clamp(22px, 3vw, 32px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+
+.scale-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 22px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule); }
+.scale-row span { font-family: var(--display); font-weight: 600; line-height: 1; }
+.scale-row i { font-family: var(--data); font-style: normal; font-size: 10.5px; color: var(--muted); }
+
+/* ---------- THE SIGNATURE: ป้ายโครงการ ---------- */
+
+.placard { border: 1px solid var(--ink); background: var(--paper); max-width: 460px; }
+.placard-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.placard-plate { border-top: 2px solid var(--brass-line); padding: 16px 18px 6px; background: var(--paper-2); }
+.placard-plate h4 { font-size: 17px; line-height: 1.4; font-weight: 600; }
+.placard-rows { margin: 14px 0 0; display: grid; }
+.placard-rows div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-top: 1px solid var(--paper-3);
+}
+.placard-rows dt { font-size: 13px; color: var(--muted); }
+.placard-rows dd { margin: 0; font-size: 14.5px; font-weight: 500; }
+.placard-rows dd.num { font-family: var(--data); font-size: 14px; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  font-family: var(--data);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--verified);
+}
+.stamp::before { content: ''; width: 9px; height: 9px; border: 1.5px solid currentColor; border-radius: 50%; }
+
+.anatomy { display: grid; gap: 28px; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); align-items: start; }
+.anatomy ol { margin: 0; padding: 0; list-style: none; display: grid; }
+.anatomy li { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 13px 0; border-top: 1px solid var(--rule); }
+.anatomy li:last-child { border-bottom: 1px solid var(--rule); }
+.anatomy li b { font-family: var(--data); font-size: 12px; font-weight: 600; color: var(--brass); }
+.anatomy li span { font-size: 14.5px; line-height: 1.65; }
+.anatomy li span em { font-style: normal; font-weight: 600; }
+
+/* ---------- photo tiers ---------- */
+
+.tier { border-top: 1px solid var(--rule); padding-top: 24px; }
+.tier-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; margin-bottom: 8px; }
+.tier-head .n { font-family: var(--data); font-size: 11px; letter-spacing: .16em; color: var(--brass); text-transform: uppercase; }
+.tier-head h3 { font-size: 21px; }
+.tier > p { margin-bottom: 22px; }
+
+/* tier 1 — split hero */
+.hero-demo { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); border: 1px solid var(--rule); }
+.hero-demo .copy { padding: clamp(22px, 3.4vw, 40px); display: flex; flex-direction: column; justify-content: center; gap: 14px; background: var(--paper); }
+.hero-demo .copy h4 { font-size: clamp(21px, 2.8vw, 31px); line-height: 1.22; }
+.hero-demo .copy .kicker { font-family: var(--data); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--water); }
+.hero-demo img { display: block; width: 100%; height: 100%; min-height: 240px; object-fit: cover; }
+
+/* tier 2 — contact sheet */
+.contact-sheet { display: flex; gap: 1px; overflow-x: auto; background: var(--rule); border: 1px solid var(--rule); scroll-snap-type: x mandatory; }
+.contact-sheet figure { margin: 0; flex: 1 0 132px; background: var(--paper); scroll-snap-align: start; }
+.contact-sheet img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.contact-sheet figcaption { padding: 8px 10px 10px; font-family: var(--data); font-size: 10.5px; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* tier 3 — weighted grid */
+/* The lead project takes two columns and both rows; the two smaller ones stack
+   beside it. Its photo flexes to absorb the leftover height so the two columns
+   finish flush instead of leaving a ragged edge. */
+.weighted { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.weighted > *:first-child { grid-column: span 2; grid-row: span 2; }
+.weighted article { display: flex; flex-direction: column; border: 1px solid var(--rule); background: var(--paper); }
+.weighted img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.weighted > *:first-child img { aspect-ratio: auto; flex: 1; min-height: 260px; }
+.weighted .plate { border-top: 2px solid var(--brass-line); padding: 12px 14px 14px; background: var(--paper-2); }
+.weighted h4 { font-size: 15.5px; line-height: 1.4; }
+.weighted .cost { margin-top: 8px; font-family: var(--data); font-size: 15px; font-weight: 600; color: var(--brass); font-variant-numeric: tabular-nums; }
+.weighted .where { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.ratio-note { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); margin-top: 6px; }
+.ratio-note div { border-left: 2px solid var(--seal); padding: 4px 0 4px 14px; }
+.ratio-note b { font-family: var(--data); font-size: 13px; display: block; }
+.ratio-note span { font-size: 13.5px; color: var(--muted); }
+
+/* ---------- MOU seals ---------- */
+
+.seal-band { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 26px 0; }
+.seal-row { display: flex; flex-wrap: wrap; gap: 30px 44px; align-items: flex-start; }
+.seal-item { display: flex; gap: 16px; align-items: center; }
+.seal-mark {
+  flex: none;
+  width: 72px; height: 72px;
+  display: grid; place-items: center;
+  border: 1px dashed var(--brass-line);
+  border-radius: 50%;
+  font-family: var(--data);
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--brass);
+  text-align: center;
+}
+.seal-mark.sm { width: 40px; height: 40px; font-size: 7.5px; }
+.seal-text strong { display: block; font-family: var(--display); font-size: 16px; font-weight: 600; line-height: 1.35; }
+.seal-text .when { font-family: var(--data); font-size: 11px; letter-spacing: .08em; color: var(--brass); margin-top: 3px; }
+
+.placement { display: grid; gap: 18px; }
+.placement > div { display: grid; grid-template-columns: 84px 1fr; gap: 20px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.placement .where { font-family: var(--data); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--brass); padding-top: 3px; }
+.placement h4 { font-size: 17px; }
+.placement p { margin-top: 6px; font-size: 14.5px; line-height: 1.7; color: var(--muted); }
+
+.footer-band { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; }
+.footer-band .cap { font-family: var(--data); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- cut list ---------- */
+
+.cuts { width: 100%; border-collapse: collapse; }
+.cuts caption { text-align: left; font-size: 14px; color: var(--muted); padding-bottom: 14px; }
+.cuts th, .cuts td { text-align: left; vertical-align: top; padding: 14px 18px 14px 0; border-top: 1px solid var(--rule); font-size: 14.5px; line-height: 1.65; }
+.cuts thead th { border-top: 2px solid var(--ink); font-family: var(--data); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding-bottom: 10px; }
+.cuts tbody th { font-weight: 600; width: 30%; }
+.cuts td:last-child { padding-right: 0; }
+.cuts .keep { color: var(--verified); font-weight: 600; }
+
+.table-wrap { overflow-x: auto; }
+
+.colophon { margin-top: 88px; padding-top: 22px; border-top: 3px solid var(--seal); display: flex; flex-wrap: wrap; gap: 10px 30px; }
+
+@media (max-width: 860px) {
+  .anatomy, .hero-demo { grid-template-columns: 1fr; }
+  .weighted { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .weighted > *:first-child { grid-column: span 2; }
+  .swatch { grid-template-columns: 64px 1fr; }
+  .swatch-ratio { grid-column: 2; text-align: left; }
+  .cuts tbody th { width: auto; }
+}
+@media (max-width: 560px) {
+  .weighted, .placement > div, .clause-head { grid-template-columns: 1fr; }
+  .weighted > *:first-child { grid-column: auto; }
+  .clause-head .note { grid-column: 1; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <dl class="masthead-meta">
+      <div><dt>Document</dt><dd>DD-01</dd></div>
+      <div><dt>Client</dt><dd>SUPREME DGG CO., LTD.</dd></div>
+      <div><dt>Scope</dt><dd>Corporate website — visual direction</dd></div>
+      <div><dt>Status</dt><dd>For decision</dd></div>
+    </dl>
+
+    <h1>บันทึก ไม่ใช่โบรชัวร์</h1>
+    <div class="sub">Public Record — ทิศทางการออกแบบเว็บไซต์</div>
+
+    <p class="lede">คนที่ต้องเชื่อเว็บไซต์นี้คือเจ้าหน้าที่พัสดุและคณะกรรมการจัดซื้อจัดจ้างของ อบต. และเทศบาล สิ่งที่ทำให้คนกลุ่มนี้เชื่อไม่ใช่ความทันสมัย แต่คือหลักฐาน — เลขทะเบียน เลขสัญญา งบประมาณ วันที่ ตราสถาบัน และรูปถ่ายงานที่ส่งมอบแล้ว ทิศทางนี้จึงทำให้หน้าเว็บอ่านเหมือนบันทึกราชการที่ตรวจสอบได้ ไม่ใช่หน้าขายของ</p>
+  </header>
+
+  <!-- ══════════ 01 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">01</span>
+      <h2>ปัญหาของภาษาภาพปัจจุบัน</h2>
+      <p class="note">โครงข้อมูลของเว็บใช้ได้แล้ว สิ่งที่ยังขัดกับโจทย์คือวิธีที่มันดู</p>
+    </div>
+    <div class="clause-body">
+      <p>เว็บปัจจุบันใช้ navy กับ cyan สด การ์ดมุมมน รูป hero ถูกทับด้วย overlay มืด ตัวเลขทุกตัวเป็น cyan และทุก section ค่อย ๆ ปรากฏตอนเลื่อนหน้า ชุดสัญญาณนี้รวมกันแล้วอ่านออกมาเป็นบริษัทซอฟต์แวร์ที่บังเอิญขายระบบน้ำ</p>
+      <p>ผลที่ตามมาชัดที่สุดอยู่ที่ตัวเลข เมื่อ cyan ถูกใช้กับทุกอย่าง มูลค่าโครงการสะสมจึงมีน้ำหนักภาพเท่ากับหัวข้อ section — มันเลยอ่านเหมือนตัวเลขการตลาด ไม่ใช่ตัวเลขในสัญญา</p>
+    </div>
+  </section>
+
+  <!-- ══════════ 02 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">02</span>
+      <h2>ระบบสี</h2>
+      <p class="note">หมึกราชการบนกระดาษเอกสาร — ค่า contrast ด้านขวาคำนวณจากสีจริงบนหน้านี้ ไม่ได้พิมพ์ไว้</p>
+    </div>
+    <div class="clause-body">
+
+      <div class="swatches" id="swatches">
+        <div class="swatch" data-fg="#12202F">
+          <div class="swatch-chip" style="background:#12202F"></div>
+          <div>
+            <div class="swatch-name">--ink · #12202F</div>
+            <div class="swatch-role">หัวข้อ เนื้อความ และพื้นของ section เข้ม</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#F2EFE9" data-ground>
+          <div class="swatch-chip" style="background:#F2EFE9"></div>
+          <div>
+            <div class="swatch-name">--paper · #F2EFE9</div>
+            <div class="swatch-role">พื้นหลักทั้งเว็บ เทาอุ่น ไม่ใช่เทาอมฟ้า</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#E8E3D9" data-ground>
+          <div class="swatch-chip" style="background:#E8E3D9"></div>
+          <div>
+            <div class="swatch-name">--paper-2 · #E8E3D9</div>
+            <div class="swatch-role">พื้นแผ่นป้ายข้อมูลและโซนตาราง</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#16457A">
+          <div class="swatch-chip" style="background:#16457A"></div>
+          <div>
+            <div class="swatch-name">--seal · #16457A</div>
+            <div class="swatch-role">น้ำเงินสถาบัน — เส้นโครงสร้าง หัวป้าย ลิงก์ ปุ่มหลัก</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#7D5F10">
+          <div class="swatch-chip" style="background:#7D5F10"></div>
+          <div>
+            <div class="swatch-name">--brass · #7D5F10</div>
+            <div class="swatch-role">เฉพาะข้อเท็จจริงที่ยืนยันได้ — ตรา MOU มูลค่าสัญญา สถานะส่งมอบ</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#B08D2F" data-graphic>
+          <div class="swatch-chip" style="background:#B08D2F"></div>
+          <div>
+            <div class="swatch-name">--brass-line · #B08D2F</div>
+            <div class="swatch-role">เส้นคาดและวงตราเท่านั้น ห้ามใช้กับตัวอักษรขนาดเล็ก</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#0E6B4F">
+          <div class="swatch-chip" style="background:#0E6B4F"></div>
+          <div>
+            <div class="swatch-name">--verified · #0E6B4F</div>
+            <div class="swatch-role">สถานะตรวจรับแล้ว และสายงานพลังงานทดแทน</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#1E7FA8" data-graphic>
+          <div class="swatch-chip" style="background:#1E7FA8"></div>
+          <div>
+            <div class="swatch-name">--water · #1E7FA8</div>
+            <div class="swatch-role">โดเมนน้ำ — ไดอะแกรมและตัวอักษรขนาดใหญ่ ไม่ใช่สีแบรนด์อีกต่อไป</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#5A6B7D">
+          <div class="swatch-chip" style="background:#5A6B7D"></div>
+          <div>
+            <div class="swatch-name">--muted · #5A6B7D</div>
+            <div class="swatch-role">ข้อความรองและคำอธิบายใต้ภาพ</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+        <div class="swatch" data-fg="#C9C2B4" data-graphic>
+          <div class="swatch-chip" style="background:#C9C2B4"></div>
+          <div>
+            <div class="swatch-name">--rule · #C9C2B4</div>
+            <div class="swatch-role">เส้น hairline บนกระดาษ ใช้แทน box-shadow ทุกจุด</div>
+          </div>
+          <div class="swatch-ratio"></div>
+        </div>
+      </div>
+
+      <div>
+        <h3>สามการตัดสินใจที่เปลี่ยนความรู้สึกมากที่สุด</h3>
+        <p class="note">เรียงตามอัตราส่วนผลลัพธ์ต่อขนาดการแก้</p>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <div class="panel before">
+            <div class="fig-num">1,850</div>
+            <div class="fig-cap">ล้านบาท · มูลค่าโครงการสะสม</div>
+          </div>
+          <figcaption>ปัจจุบัน — cyan #35B8E8 บนเทาอมฟ้า #F4F7FA</figcaption>
+        </figure>
+        <figure>
+          <div class="panel after">
+            <div class="fig-num">1,850</div>
+            <div class="fig-cap">ล้านบาท · มูลค่าโครงการสะสม</div>
+          </div>
+          <figcaption>เสนอ — ทองเหลือง #7D5F10 บนกระดาษ #F2EFE9</figcaption>
+        </figure>
+      </div>
+
+      <div class="ratio-note">
+        <div>
+          <b>01 · พื้นเทาอุ่นแทนเทาอมฟ้า</b>
+          <span>เทาอมฟ้าอ่านว่า “หน้าจอ” เทาอุ่นอ่านว่า “กระดาษและคอนกรีต” เปลี่ยนค่าเดียวได้ผลมากที่สุด</span>
+        </div>
+        <div>
+          <b>02 · ลดตำแหน่ง cyan</b>
+          <span>จากสีของทุกตัวเลข เหลือสีของโดเมนน้ำอย่างเดียว cyan สดคือตัวบอกว่านี่คือเว็บเทคโนโลยี</span>
+        </div>
+        <div>
+          <b>03 · ทองเหลืองเฉพาะสิ่งที่ยืนยันได้</b>
+          <span>เป็นสีของแผ่นป้ายทองเหลืองจริง ใช้เล็ก ไม่ใช้เป็นพื้น ไม่ใช้ gradient ถ้าใช้เกินจะดูถูกทันที</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 03 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">03</span>
+      <h2>ตัวอักษร</h2>
+      <p class="note">ตัด Montserrat ทิ้ง — geometric sans ตัวหนา letter-spacing กว้าง คือลายเซ็นของงาน template</p>
+    </div>
+    <div class="clause-body">
+
+      <div class="specimen">
+        <div class="specimen-meta">
+          <span class="role">Display</span>
+          <span class="face">Bai Jamjuree</span>
+          <span class="why">โรงหล่อ Cadson Demak ตัวอักษรเหลี่ยมเชิงเทคนิค รองรับไทยและละตินในครอบครัวเดียว</span>
+        </div>
+        <div class="sp-display">งานวิศวกรรมที่ตรวจสอบได้</div>
+        <div class="scale-row">
+          <span style="font-size:48px">48<i> หัวหน้า</i></span>
+          <span style="font-size:34px">34<i> หัวข้อ</i></span>
+          <span style="font-size:24px">24<i> หัวรอง</i></span>
+          <span style="font-size:19px">19<i> นำเรื่อง</i></span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-meta">
+          <span class="role">Body</span>
+          <span class="face">IBM Plex Sans Thai</span>
+          <span class="why">ใช้อยู่แล้วในเว็บปัจจุบัน มีหัว อ่านยาวสบาย เหมาะกับน้ำเสียงเอกสารราชการ</span>
+        </div>
+        <p class="sp-body">บริษัทรับผิดชอบทั้งระบบ ตั้งแต่วิเคราะห์คุณภาพน้ำต้นทาง ออกแบบ ผลิตชุดอุปกรณ์ ติดตั้ง ทดสอบเดินระบบ จนถึงส่งมอบพร้อมแผนบำรุงรักษา ทุกโครงการผ่านกระบวนการจัดซื้อจัดจ้างของหน่วยงานราชการส่วนท้องถิ่น</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-meta">
+          <span class="role">Data</span>
+          <span class="face">IBM Plex Mono</span>
+          <span class="why">ตัวเลขสัญญา งบประมาณ วันที่ ขนาดความจุ — mono คือสัญญาณว่านี่คือบันทึก ไม่ใช่คำโฆษณา</span>
+        </div>
+        <div class="sp-data">18,500,000 · 1,000 m³ · 2567 · 0105552117513</div>
+      </div>
+
+      <p class="note"><strong>ข้อจำกัดที่ต้องรู้:</strong> IBM Plex Mono ไม่รองรับอักษรไทย ใช้ได้เฉพาะตัวเลขและละติน ป้ายกำกับภาษาไทยที่อยู่ข้างกันต้องใช้ Plex Sans Thai และต้องจัด baseline ให้ตรงกันในแถวเดียว</p>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 04 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">04</span>
+      <h2>ป้ายโครงการ</h2>
+      <p class="note">องค์ประกอบที่ทั้งเว็บจะถูกจำ ไม่ใช่การเปรียบเปรย แต่เป็นของจริงที่ผู้อ่านกลุ่มนี้เห็นทุกวัน</p>
+    </div>
+    <div class="clause-body">
+
+      <p>ทุกไซต์ก่อสร้างราชการมีป้ายโครงการปักอยู่หน้างาน บอกชื่อโครงการ ผู้ว่าจ้าง งบประมาณ และกำหนดแล้วเสร็จ ในรูปผลงานของบริษัทเองก็มีป้ายนี้อยู่ในเฟรม การ์ดผลงานทุกใบจึงเปลี่ยนเป็นแผ่นป้ายข้อมูลแบบเดียวกัน</p>
+
+      <div class="anatomy">
+        <article class="placard">
+          <img class="placard-photo" src="../assets/project-02.jpg" alt="ถังเก็บน้ำขนาด 1,000 ลูกบาศก์เมตร องค์การบริหารส่วนตำบลแม่สลิด จังหวัดตาก">
+          <div class="placard-plate">
+            <h4>ก่อสร้างถังเก็บน้ำ ขนาด 1,000 ม³</h4>
+            <dl class="placard-rows">
+              <div><dt>ผู้ว่าจ้าง</dt><dd>อบต.แม่สลิด</dd></div>
+              <div><dt>พื้นที่</dt><dd>หมู่ 9 ต.แม่สลิด อ.บ้านตาก จ.ตาก</dd></div>
+              <div><dt>งบประมาณ</dt><dd class="num">18,500,000 บาท</dd></div>
+              <div><dt>ส่งมอบ</dt><dd class="num">2567<span class="stamp">ตรวจรับแล้ว</span></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <ol>
+          <li><b>01</b><span><em>มุมฉาก 0px</em> — มุมมนอ่านว่าซอฟต์แวร์ ป้ายจริงไม่มีมุมมน</span></li>
+          <li><b>02</b><span><em>เส้นทองเหลือง 2px</em> คั่นรูปกับข้อมูล เป็นจุดเดียวที่ทองเหลืองปรากฏบนการ์ด</span></li>
+          <li><b>03</b><span><em>คอลัมน์ป้ายกำกับกว้างคงที่</em> ทุกใบตรงกัน ตาไล่ลงในแนวเดียวได้ทั้งหน้า</span></li>
+          <li><b>04</b><span><em>ตัวเลขเป็น mono</em> พร้อม tabular-nums หลักเลขตรงกันทุกแถว</span></li>
+          <li><b>05</b><span><em>ตราสถานะ</em> วงกลมเส้นบางสีเขียว ไม่ใช่ป้ายพื้นทึบ — ตราประทับ ไม่ใช่แท็ก</span></li>
+          <li><b>06</b><span><em>ไม่มี box-shadow</em> ทั้งใบ ใช้เส้นขอบ 1px แทน เงาทำให้กระดาษกลายเป็นการ์ดลอย</span></li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 05 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">05</span>
+      <h2>การวางรูปผลงาน</h2>
+      <p class="note">ปัญหาปัจจุบัน — การ์ด 4:3 เท่ากันหมด ทำให้อาคารเทศบาล 42 ล้าน กับป้อมยาม 3.2 ล้าน มีน้ำหนักภาพเท่ากัน</p>
+    </div>
+    <div class="clause-body">
+
+      <div class="tier">
+        <div class="tier-head"><span class="n">ระดับ 1</span><h3>Hero แบ่งครึ่ง — รูปเต็มกำลัง ไม่ทำมืด</h3></div>
+        <p>ตอนนี้รูป hero ถูกทับ overlay มืดแล้ววางตัวหนังสือลอยทับ นั่นคือท่าที่หน้า marketing ทุกหน้าใช้ และมันลดน้ำหนักของหลักฐานลง เปลี่ยนเป็นบล็อกหัวข้อบนกระดาษทึบด้านซ้าย รูปเต็มความสว่างด้านขวา — รูปคือหลักฐาน อย่าหรี่หลักฐาน</p>
+        <div class="hero-demo">
+          <div class="copy">
+            <span class="kicker">Water · Engineering · Energy</span>
+            <h4>บริษัทวิศวกรรมที่ส่งมอบโครงการจริงกับภาครัฐ</h4>
+            <p class="note">ส่งมอบแล้วกว่า 30 โครงการให้ อบต. และเทศบาลใน 10 จังหวัด</p>
+          </div>
+          <img src="../assets/hero.png" alt="ถังเก็บน้ำ ระบบกรอง และแผงโซลาร์เซลล์ในโครงการที่ติดตั้งแล้ว">
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head"><span class="n">ระดับ 2</span><h3>Contact sheet ใต้ hero ทันที</h3></div>
+        <p>แทนที่แถบไอคอนปัจจุบัน ไอคอน SVG พิสูจน์อะไรไม่ได้ รูปถ่ายพิสูจน์ได้ แถบรูปจัตุรัสเรียงติดกันพร้อมคำกำกับ mono อ่านเหมือนฟิล์มคอนแทคชีต — ม้วนหลักฐาน มือถือเลื่อนแนวนอนแบบ scroll-snap</p>
+        <div class="contact-sheet">
+          <figure><img src="../assets/project-01.jpg" alt="ถังเก็บน้ำ อบต.แม่สลิด จ.ตาก"><figcaption>ตาก · 2567<br>1,000 m³</figcaption></figure>
+          <figure><img src="../assets/project-08.jpg" alt="ถังเก็บน้ำ จ.สุราษฎร์ธานี"><figcaption>สุราษฎร์ธานี · 2566<br>1,000 m³</figcaption></figure>
+          <figure><img src="../assets/project-14.jpg" alt="ถังเก็บน้ำ จ.ยโสธร"><figcaption>ยโสธร · 2566<br>500 m³</figcaption></figure>
+          <figure><img src="../assets/project-19.jpg" alt="ถังเก็บน้ำ จ.บุรีรัมย์"><figcaption>บุรีรัมย์ · 2567<br>500 m³</figcaption></figure>
+          <figure><img src="../assets/project-25.jpg" alt="ระบบน้ำประปาดื่มได้ จ.สระบุรี"><figcaption>สระบุรี · 2568<br>ประปาดื่มได้</figcaption></figure>
+          <figure><img src="../assets/project-29.jpg" alt="ระบบน้ำประปาดื่มได้ จ.หนองคาย"><figcaption>หนองคาย · 2568<br>ประปาดื่มได้</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head"><span class="n">ระดับ 3</span><h3>Grid น้ำหนักไม่เท่ากัน</h3></div>
+        <p>การ์ดใบแรกกว้างสองคอลัมน์และรูปสูงกว่า เรียงตามมูลค่าสัญญาจากมากไปน้อย โครงการใหญ่ที่สุดต้องเป็นสิ่งแรกที่เห็นเสมอ</p>
+        <div class="weighted">
+          <article>
+            <img src="../assets/project-09.jpg" alt="โครงการถังเก็บน้ำขนาดใหญ่">
+            <div class="plate">
+              <h4>ก่อสร้างอาคารสำนักงานเทศบาล 3 ชั้น</h4>
+              <div class="cost">42,000,000 บาท</div>
+              <div class="where">หน่วยงานตัวอย่าง B · 2566</div>
+            </div>
+          </article>
+          <article>
+            <img src="../assets/project-04.jpg" alt="โครงการถังเก็บน้ำ">
+            <div class="plate">
+              <h4>ถังเก็บน้ำ 1,000 ม³</h4>
+              <div class="cost">18,500,000 บาท</div>
+              <div class="where">อบต.แม่สลิด · 2567</div>
+            </div>
+          </article>
+          <article>
+            <img src="../assets/project-21.jpg" alt="โครงการระบบน้ำ">
+            <div class="plate">
+              <h4>ระบบประปาดื่มได้</h4>
+              <div class="cost">7,400,000 บาท</div>
+              <div class="where">เทศบาลตำบลท่าตูม · 2568</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="ratio-note">
+          <div><b>3 : 2</b><span>งานอาคาร — โรงเรียน อาคารเทศบาล เป็นวัตถุแนวนอน</span></div>
+          <div><b>4 : 3</b><span>งานถังและงานระบบ — วัตถุค่อนไปทางจัตุรัส</span></div>
+          <div><b>1 : 1</b><span>contact sheet — ให้ทุกรูปมีน้ำหนักเท่ากันโดยตั้งใจ</span></div>
+        </div>
+        <p class="note">การบังคับ 4:3 กับทุกอย่างคือเหตุผลที่หน้างานก่อสร้างจะดูอ่อนกว่าหน้าอื่นเสมอ</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 06 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">06</span>
+      <h2>ตำแหน่งตรา MOU และพาร์ตเนอร์</h2>
+      <p class="note">ตอนนี้อยู่กลางหน้าแรกในรูปการ์ดข้อความ และเป็นรายการ bullet ในหน้าเกี่ยวกับเรา — ตำแหน่งที่อ่อนที่สุดเท่าที่เป็นไปได้</p>
+    </div>
+    <div class="clause-body">
+
+      <div class="seal-band">
+        <div class="seal-row">
+          <div class="seal-item">
+            <div class="seal-mark">ตรา<br>รอไฟล์</div>
+            <div class="seal-text"><strong>มทร.ล้านนา</strong><span class="when">MOU · 12 มี.ค. 2566</span></div>
+          </div>
+          <div class="seal-item">
+            <div class="seal-mark">ตรา<br>รอไฟล์</div>
+            <div class="seal-text"><strong>มหาวิทยาลัยแม่โจ้</strong><span class="when">MOU · 5 ก.ย. 2567</span></div>
+          </div>
+          <div class="seal-item">
+            <div class="seal-mark">ตรา<br>รอไฟล์</div>
+            <div class="seal-text"><strong>ทะเบียนนิติบุคคล</strong><span class="when">0105552117513 · 2552</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">ตัวอย่างแถบหลักฐาน ขนาดตราจริง 72px — ไฟล์ตรายังไม่มี จึงแสดงเป็นกรอบรอไฟล์</p>
+
+      <div class="placement">
+        <div>
+          <span class="where">ที่ 1</span>
+          <div>
+            <h4>ต่อจาก contact sheet ทันที ก่อนเนื้อหาขายทั้งหมด</h4>
+            <p>คนอ่านกลุ่มนี้สแกนหาความเชื่อมโยงกับสถาบันเป็นอย่างแรก การให้เขาเลื่อนผ่านเนื้อหาขายสาม section กว่าจะเจอ คือการทิ้งของที่ดีที่สุดที่บริษัทมี</p>
+          </div>
+        </div>
+        <div>
+          <span class="where">ที่ 2</span>
+          <div>
+            <h4>แถบย่อซ้ำใน footer ทุกหน้า</h4>
+            <p>ตราชุดเดิมขนาด 40px แถวเดียวคั่นด้วยเส้น hairline ความน่าเชื่อถือตามผู้อ่านไปทุกหน้าโดยไม่กินพื้นที่</p>
+          </div>
+        </div>
+        <div>
+          <span class="where">ที่ 3</span>
+          <div>
+            <h4>วางตราไว้ติดกับข้อกล่าวอ้างที่มันรับรอง</h4>
+            <p>ตรา ม.แม่โจ้ ต้องอยู่ในหัวข้อแก๊สซิไฟเออร์และไบโอชาร์ของหน้าพลังงาน ไม่ใช่ในบล็อกพาร์ตเนอร์รวม ตรา มทร.ล้านนา อยู่ในหัวข้อระบบกรองน้ำของหน้าระบบน้ำ ตราจะทำงานก็ต่อเมื่ออยู่ติดกับสิ่งที่มันพิสูจน์</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-band">
+        <span class="cap">ตัวอย่างแถบใน footer</span>
+        <div class="seal-mark sm">ตรา</div>
+        <div class="seal-mark sm">ตรา</div>
+        <div class="seal-mark sm">ตรา</div>
+        <span class="data" style="color:var(--muted)">MOU 2566 · MOU 2567 · จดทะเบียน 2552</span>
+      </div>
+
+      <p class="note"><strong>กฎการใช้ตรา:</strong> ห้ามเปลี่ยนสี ห้ามใส่วงกลม gradient ห้าม hover ยกลอย วางแบนบนกระดาษ มีเส้นคาดด้านบน และมีป้าย mono สีทองเหลืองขนาดเล็กบอกปีที่ลงนามอยู่ข้างกัน</p>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 07 ══════════ -->
+  <section class="clause">
+    <div class="clause-head">
+      <span class="clause-num">07</span>
+      <h2>สิ่งที่ต้องตัด</h2>
+      <p class="note">ก่อนออกจากบ้าน ถอดเครื่องประดับออกหนึ่งชิ้น</p>
+    </div>
+    <div class="clause-body">
+      <div class="table-wrap">
+        <table class="cuts">
+          <caption>สี่รายการนี้ตัดออกได้โดยไม่เสียข้อมูลใด ๆ และแต่ละรายการทำให้หน้าเว็บอ่านว่า “บันทึก” มากขึ้น</caption>
+          <thead>
+            <tr><th>ตัดออก</th><th>เพราะ</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>fade-up ตอนเลื่อนหน้า ทุก section</th>
+              <td>section ที่ค่อย ๆ ปรากฏคือพฤติกรรมที่อ่านว่าหน้า marketing มากที่สุดในเว็บปัจจุบัน และมันขัดกับความรู้สึก “บันทึกที่นิ่งและตายตัว” โดยตรง <span class="keep">เหลือไว้:</span> hero ตอนโหลดครั้งแรก และ hover บนแผ่นป้าย</td>
+            </tr>
+            <tr>
+              <th>มุมมน 6px บนการ์ดผลงาน</th>
+              <td>ป้ายโครงการจริงไม่มีมุมมน มุมฉากคือความต่างที่เล็กที่สุดระหว่างการ์ดซอฟต์แวร์กับแผ่นป้าย</td>
+            </tr>
+            <tr>
+              <th>box-shadow ทุกจุด</th>
+              <td>เงาทำให้องค์ประกอบลอยเหนือหน้า กระดาษไม่ลอย ใช้เส้น hairline 1px แทนทั้งหมด</td>
+            </tr>
+            <tr>
+              <th>overlay มืดบนรูป hero</th>
+              <td>รูปคือหลักฐานชิ้นสำคัญที่สุดที่หน้าแรกมี การหรี่มันลงเพื่อวางตัวหนังสือทับคือการแลกหลักฐานกับความสะดวกในการจัดหน้า</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <span class="label">SUPREME DGG · Design Direction DD-01</span>
+    <span class="label">Public Record</span>
+    <span class="label">ตัวเลข ชื่อหน่วยงาน และตราสถาบันในเอกสารนี้เป็นข้อมูลตัวอย่างสำหรับจัดหน้า ไม่ใช่ข้อมูลจริงของบริษัท</span>
+  </footer>
+
+</div>
+
+<script>
+/* Measure the contrast of every swatch against --paper and print it, so the
+   numbers in this document are read off the rendered colors rather than typed
+   into it by hand. If a swatch is edited, the rating follows. */
+(function () {
+  'use strict';
+
+  var PAPER = [0xF2, 0xEF, 0xE9];
+
+  function channel(c) {
+    c /= 255;
+    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  function luminance(rgb) {
+    return 0.2126 * channel(rgb[0]) + 0.7152 * channel(rgb[1]) + 0.0722 * channel(rgb[2]);
+  }
+
+  function parse(hex) {
+    return [
+      parseInt(hex.slice(1, 3), 16),
+      parseInt(hex.slice(3, 5), 16),
+      parseInt(hex.slice(5, 7), 16)
+    ];
+  }
+
+  function ratio(a, b) {
+    var la = luminance(a), lb = luminance(b);
+    var hi = Math.max(la, lb), lo = Math.min(la, lb);
+    return (hi + 0.05) / (lo + 0.05);
+  }
+
+  document.querySelectorAll('#swatches .swatch').forEach(function (row) {
+    var out = row.querySelector('.swatch-ratio');
+    if (!out) return;
+
+    if (row.hasAttribute('data-ground')) {
+      out.innerHTML = '<b>—</b>พื้นหลัง';
+      return;
+    }
+
+    var r = ratio(parse(row.dataset.fg), PAPER);
+    var value = r.toFixed(2) + ' : 1';
+    var verdict, cls;
+
+    if (row.hasAttribute('data-graphic')) {
+      verdict = 'กราฟิกเท่านั้น';
+      cls = 'limit';
+    } else if (r >= 4.5) {
+      verdict = 'ผ่าน AA';
+      cls = 'pass';
+    } else if (r >= 3) {
+      verdict = 'ตัวใหญ่เท่านั้น';
+      cls = 'limit';
+    } else {
+      verdict = 'ไม่ผ่าน';
+      cls = 'limit';
+    }
+
+    out.innerHTML = '<b>' + value + '</b><span class="' + cls + '">' + verdict + '</span>';
+  });
+})();
+</script>
